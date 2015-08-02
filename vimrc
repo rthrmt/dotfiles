@@ -156,12 +156,13 @@ set smartcase
 " First Pathogen
 runtime bundle/pathogen/autoload/pathogen.vim
 execute pathogen#infect()
+Helptags
 
 " Settings for vim-airline
 " git clone https://github.com/bling/vim-airline ~/.vim/bundle/vim-airline
-"" set laststatus=2
-"" let g:airline_powerline_fonts = 1
-"" let g:airline#extensions#tabline#enabled = 1
+set laststatus=2
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 
 
 " Settings for ctrlp
@@ -216,8 +217,7 @@ inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
 
 " Python folding
 "" mkdir -p ~/.vim/ftplugin
-"" wget -O ~/.vim/ftplugin/python_editing.vim 
-http://www.vim.org/scripts/download_script.php ?src_id=5492
+"" wget -O ~/.vim/ftplugin/python_editing.vim http://www.vim.org/scripts/download_script.php ?src_id=5492
 "" set nofoldenable
 
 
@@ -232,32 +232,22 @@ http://www.vim.org/scripts/download_script.php ?src_id=5492
 "" let g:rainbow_active = 0
 "" let g:rainbow_conf = {
 ""     \   'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
-""     \   'ctermfgs': ['white', 'lightblue', 'lightyellow', 'lightcyan', 
-'lightmagenta'],
+""     \   'ctermfgs': ['white', 'lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
 ""     \   'operators': '_,_',
-""     \   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ 
-fold', 'start=/{/ end=/}/ fold'],
+""     \   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
 ""     \   'separately': {
 ""     \       '*': {},
 ""     \       'tex': {
 ""     \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
 ""     \       },
 ""     \       'lisp': {
-""     \           'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 
-'firebrick', 'darkorchid3'],
+""     \           'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
 ""     \       },
 ""     \       'vim': {
-""     \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 
-'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 
-'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold 
-containedin=vimFuncBody'],
+""     \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
 ""     \       },
 ""     \       'html': {
-""     \           'parentheses': 
-['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|
-param|source|track|wbr)[ 
->])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'
-|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+""     \           'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
 ""     \       },
 ""     \       'css': 0,
 ""     \   }
