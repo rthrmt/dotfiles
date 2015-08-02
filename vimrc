@@ -1,3 +1,15 @@
+" First Pathogen
+runtime bundle/pathogen/autoload/pathogen.vim
+execute pathogen#infect()
+Helptags
+
+" Enable syntax highlighting
+" You need to reload this file for the change to apply
+filetype off
+filetype plugin indent on
+syntax on
+
+
 " Always show line numbers, but only in current window.
 "" set number
 "" :au WinEnter * :setlocal number
@@ -97,6 +109,7 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 " look at https://github.com/altercation/vim-colors-solarized
 " remember to set Terminal color palette to solarized
 set t_Co=256
+colorscheme solarized
 set background=dark
 " if you want the theme timebased do: 
 ""colorscheme solarized
@@ -107,12 +120,6 @@ set background=dark
 ""else
 ""    set background=light
 ""endif
-
-" Enable syntax highlighting
-" You need to reload this file for the change to apply
-filetype off
-filetype plugin indent on
-syntax on
 
 
 " Showing line numbers and length
@@ -153,10 +160,8 @@ set smartcase
 " Plugins
 " ============================================================================
 
-" First Pathogen
-runtime bundle/pathogen/autoload/pathogen.vim
-execute pathogen#infect()
-Helptags
+
+
 
 " Settings for vim-airline
 " git clone https://github.com/bling/vim-airline ~/.vim/bundle/vim-airline

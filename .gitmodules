@@ -4,3 +4,6 @@
 [submodule "bundle/vim-airline"]
 	path = bundle/vim-airline
 	url = https://github.com/bling/vim-airline.git
+[submodule "/home/arthur/.vim/bundle/vim-colors-solarized"]
+	path = /home/arthur/.vim/bundle/vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
