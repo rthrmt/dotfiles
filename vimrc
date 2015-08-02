@@ -153,12 +153,15 @@ set smartcase
 " Plugins
 " ============================================================================
 
+" First Pathogen
+runtime bundle/pathogen/autoload/pathogen.vim
+execute pathogen#infect()
 
 " Settings for vim-airline
 " git clone https://github.com/bling/vim-airline ~/.vim/bundle/vim-airline
-set laststatus=2
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
+"" set laststatus=2
+"" let g:airline_powerline_fonts = 1
+"" let g:airline#extensions#tabline#enabled = 1
 
 
 " Settings for ctrlp
@@ -187,25 +190,25 @@ let g:airline#extensions#tabline#enabled = 1
 " Settings for jedi-vim
 " cd ~/.vim/bundle
 " git clone git://github.com/davidhalter/jedi-vim.git
-let g:jedi#usages_command = "<leader>z"
-let g:jedi#popup_on_dot = 0
-let g:jedi#popup_select_first = 0
-map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
+"" let g:jedi#usages_command = "<leader>z"
+"" let g:jedi#popup_on_dot = 0
+"" let g:jedi#popup_select_first = 0
+"" map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
 
 
 " Better navigating through omnicomplete option list
 " See http://stackoverflow.com/questions/2170023/how-to-map-keys-for-popup-menu-in-vim
-set completeopt=longest,menuone
-function! OmniPopup(action)
-    if pumvisible()
-        if a:action == 'j'
-            return "\<C-N>"
-        elseif a:action == 'k'
-            return "\<C-P>"
-        endif
-    endif
-    return a:action
-endfunction
+"" set completeopt=longest,menuone
+"" function! OmniPopup(action)
+""     if pumvisible()
+""         if a:action == 'j'
+""             return "\<C-N>"
+""         elseif a:action == 'k'
+""             return "\<C-P>"
+""         endif
+""     endif
+""     return a:action
+"" endfunction
 
 inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
 inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
@@ -220,35 +223,45 @@ http://www.vim.org/scripts/download_script.php ?src_id=5492
 
 " Settings for Nerdtree
 " git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"" autocmd StdinReadPre * let s:std_in=1
+"" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 
 " Settings for Rainbow
 " git clone https://github.com/luochen1990/rainbow.git ~/.vim/budle/rainbow
-let g:rainbow_active = 0
-let g:rainbow_conf = {
-    \   'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
-    \   'ctermfgs': ['white', 'lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
-    \   'operators': '_,_',
-    \   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
-    \   'separately': {
-    \       '*': {},
-    \       'tex': {
-    \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
-    \       },
-    \       'lisp': {
-    \           'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
-    \       },
-    \       'vim': {
-    \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
-    \       },
-    \       'html': {
-    \           'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
-    \       },
-    \       'css': 0,
-    \   }
-    \}
+"" let g:rainbow_active = 0
+"" let g:rainbow_conf = {
+""     \   'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+""     \   'ctermfgs': ['white', 'lightblue', 'lightyellow', 'lightcyan', 
+'lightmagenta'],
+""     \   'operators': '_,_',
+""     \   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ 
+fold', 'start=/{/ end=/}/ fold'],
+""     \   'separately': {
+""     \       '*': {},
+""     \       'tex': {
+""     \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+""     \       },
+""     \       'lisp': {
+""     \           'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 
+'firebrick', 'darkorchid3'],
+""     \       },
+""     \       'vim': {
+""     \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 
+'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 
+'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold 
+containedin=vimFuncBody'],
+""     \       },
+""     \       'html': {
+""     \           'parentheses': 
+['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|
+param|source|track|wbr)[ 
+>])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'
+|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+""     \       },
+""     \       'css': 0,
+""     \   }
+""     \}
 
 
 " Settings for Golden-Ratio
