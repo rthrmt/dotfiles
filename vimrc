@@ -160,9 +160,6 @@ set smartcase
 " Plugins
 " ============================================================================
 
-
-
-
 " Settings for vim-airline
 " git clone https://github.com/bling/vim-airline ~/.vim/bundle/vim-airline
 set laststatus=2
@@ -216,8 +213,8 @@ let g:airline#extensions#tabline#enabled = 1
 ""     return a:action
 "" endfunction
 
-inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
-inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
+"" inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
+"" inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
 
 
 " Python folding
@@ -261,4 +258,4 @@ let g:rainbow_conf = {
 
 " Settings for Golden-Ratio
 " git clone git://github.com/roman/golden-ratio.git ~/.vim/bundle/golden-ratio
-" let g:loaded_golden_ratio = 1
+let g:loaded_golden_ratio = 1
