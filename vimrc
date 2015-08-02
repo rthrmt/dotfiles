@@ -225,8 +225,9 @@ let g:airline#extensions#tabline#enabled = 1
 
 " Settings for Nerdtree
 " git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle
-"" autocmd StdinReadPre * let s:std_in=1
-"" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" Open Nerdtree when vim is opened without a file
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 
 " Settings for Rainbow
