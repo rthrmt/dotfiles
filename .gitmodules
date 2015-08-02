@@ -7,3 +7,9 @@
 [submodule "/home/arthur/.vim/bundle/vim-colors-solarized"]
 	path = /home/arthur/.vim/bundle/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule "bundle/vim-wombat256mod"]
+	path = bundle/vim-wombat256mod
+	url = https://github.com/michalbachowski/vim-wombat256mod.git
+[submodule "bundle/molokai"]
+	path = bundle/molokai
+	url = https://github.com/tomasr/molokai.git
