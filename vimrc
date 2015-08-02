@@ -111,7 +111,7 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 set t_Co=256
 colorscheme solarized
 set background=dark
-" if you want the theme timebased do: 
+" if you want the theme timebased do:
 ""colorscheme solarized
 ""if strftime("%H") < 20
 ""    if strftime("%H") > 8
@@ -176,8 +176,6 @@ let g:airline#extensions#tabline#enabled = 1
 
 
 " Settings for python-mode
-" Note: I'm no longer using this. Leave this commented out
-" and uncomment the part about jedi-vim instead
 " cd ~/.vim/bundle
 " git clone https://github.com/klen/python-mode
 "" map <Leader>g :call RopeGotoDefinition()<CR>
@@ -193,28 +191,28 @@ let g:airline#extensions#tabline#enabled = 1
 " Settings for jedi-vim
 " cd ~/.vim/bundle
 " git clone git://github.com/davidhalter/jedi-vim.git
-"" let g:jedi#usages_command = "<leader>z"
-"" let g:jedi#popup_on_dot = 0
-"" let g:jedi#popup_select_first = 0
-"" map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
+let g:jedi#usages_command = "<leader>z"
+let g:jedi#popup_on_dot = 0
+let g:jedi#popup_select_first = 0
+map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
 
 
 " Better navigating through omnicomplete option list
 " See http://stackoverflow.com/questions/2170023/how-to-map-keys-for-popup-menu-in-vim
-"" set completeopt=longest,menuone
-"" function! OmniPopup(action)
-""     if pumvisible()
-""         if a:action == 'j'
-""             return "\<C-N>"
-""         elseif a:action == 'k'
-""             return "\<C-P>"
-""         endif
-""     endif
-""     return a:action
-"" endfunction
+set completeopt=longest,menuone
+function! OmniPopup(action)
+    if pumvisible()
+        if a:action == 'j'
+            return "\<C-N>"
+        elseif a:action == 'k'
+            return "\<C-P>"
+        endif
+    endif
+    return a:action
+endfunction
 
-"" inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
-"" inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
+inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
+inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
 
 
 " Python folding
@@ -260,3 +258,6 @@ let g:rainbow_conf = {
 " Settings for Golden-Ratio
 " git clone git://github.com/roman/golden-ratio.git ~/.vim/bundle/golden-ratio
 let g:loaded_golden_ratio = 1
+
+" Settings for tagbar
+nmap <F8> :TagbarToggle<CR>
