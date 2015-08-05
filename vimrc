@@ -22,12 +22,6 @@ set number
 " Let the cursor never reach the end of the screen
 set scrolloff=10
 
-" Set soft line wraps
-set wrap
-set linebreak
-set nolist
-set showbreak==---->
-
 
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
@@ -125,10 +119,15 @@ set background=dark
 " Showing line numbers and length
 set number  " show line numbers (already set at the top)
 set tw=79   " width of document (used by gd)
-set nowrap  " don't automatically wrap on load
 set fo-=t   " don't automatically wrap text when typing
 set colorcolumn=80
 highlight ColorColumn ctermbg=236
+
+" Set soft line wraps
+set wrap
+set linebreak
+set nolist
+set showbreak==---->
 
 
 " easier formatting of paragraphs
