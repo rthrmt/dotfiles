@@ -1,14 +1,14 @@
 INSTALLATION:
 
-    git clone https://github.com/rthrmt/dotvim ~/.vim
+    git clone https://github.com/rthrmt/dotfiles ~/.dotfiles
 
 CREATE SYMLINKS:
 
-    ln -s ~/.vim/vimrc ~/.vimrc
+    run create_symlink.sh
 
 DOWNLOAD SUBMODULES:
 
-    cd ~/.vim
+    cd ~/.dotfiles
     git submodules update --init
 
 NOTES:
