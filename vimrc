@@ -9,7 +9,6 @@ filetype off
 filetype plugin indent on
 syntax on
 
-
 " Always show line numbers, but only in current window.
 set number
 :au WinEnter * :setlocal number
@@ -102,7 +101,7 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 " look at https://github.com/altercation/vim-colors-solarized
 " remember to set Terminal color palette to solarized
 set t_Co=256
-colorscheme solarized
+colorscheme wombat256mod
 set background=dark
 " if you want the theme timebased do:
 ""colorscheme solarized
@@ -126,7 +125,7 @@ highlight ColorColumn ctermbg=236
 set wrap
 set linebreak
 set nolist
-set showbreak==---->
+set showbreak=...>
 
 
 " easier formatting of paragraphs
