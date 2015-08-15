@@ -102,7 +102,7 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 " For Solarized:
 " look at https://github.com/altercation/vim-colors-solarized
 " remember to set Terminal color palette to solarized
-set t_Co=256
+" set t_Co=256
 colorscheme wombat256mod
 set background=dark
 " if you want the theme timebased do:
