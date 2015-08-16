@@ -16,15 +16,18 @@ blue='\e[0;34m'
 BLUE='\e[1;34m'
 cyan='\e[0;36m'
 CYAN='\e[1;36m'
+green='\e[0;32m'
+orange='\e[0;32m'
 NC='\e[0m' # No Color
-# --> Nice. Has the same effect as using "ansi.sys" in DOS.
+
+PROMPTCOL=${blue}
 
 # Only output text if the shell is interactive (otherwise scp and likewise will fail!)
 if [ "$PS1" ]
 then
 
 	# Looks best on a black background...
-	echo -e "${cyan}This is BASH ${RED}${BASH_VERSION%.*}${cyan} - DISPLAY on ${RED}$DISPLAY${NC}\n"
+	echo -e "${PROMPTCOL}This is BASH ${RED}${BASH_VERSION%.*}${PROMPTCOL} - DISPLAY on ${RED}$DISPLAY${NC}\n"
 	date
 	#fortune # makes our day a bit more fun.... :-)
 
@@ -41,12 +44,9 @@ fi
 # Shell Prompt
 #---------------
 
-# local machine: prompt will be partly cyan
-HILIT=${cyan}
-
 # --> Replace instances of \W with \w in prompt functions below
 # --> to get display of full path name.
-PS1="\[${HILIT}\][\h]\[$NC\] \w > "
+PS1="\[${PROMPTCOL}\][\u@\h]\[$NC\] \w > "
 
 #--------------------------------------
 # User specific aliases and functions
