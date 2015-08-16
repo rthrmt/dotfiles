@@ -220,11 +220,12 @@ inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
 "" set nofoldenable
 
 
-" Settings for Nerdtree
-" git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle
-" Open Nerdtree when vim is opened without a file
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"" Settings for Nerdtree
+"" git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle
+"" Open Nerdtree when vim is opened without a file
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+nmap <F7> :NERDTreeToggle<CR>
 
 
 " Settings for Rainbow
