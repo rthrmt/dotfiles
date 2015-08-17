@@ -219,6 +219,15 @@ inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
 "" wget -O ~/.vim/ftplugin/python_editing.vim http://www.vim.org/scripts/download_script.php ?src_id=5492
 "" set nofoldenable
 
+" Settings for Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 "" Settings for Nerdtree
 "" git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle
