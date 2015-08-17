@@ -23,6 +23,9 @@ set number
 " Let the cursor never reach the end of the screen
 set scrolloff=10
 
+" Hightlight current line
+set cursorline
+
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
 
