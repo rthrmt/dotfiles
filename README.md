@@ -9,7 +9,8 @@ CREATE SYMLINKS:
 DOWNLOAD SUBMODULES:
 
     cd ~/.dotfiles
-    git submodules update --init
+    git submodules update --init --recursive
+    # --recursive because of jedi inside of jedi-vim
 
 NOTES:
 
