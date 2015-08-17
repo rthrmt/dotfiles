@@ -26,6 +26,9 @@ set scrolloff=10
 " Hightlight current line
 set cursorline
 
+" Set wildmenu
+set wildmenu
+
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
 
