@@ -1,0 +1,26 @@
+[user]
+	name = #add name here
+	email = #add mail here
+[color]
+	ui = auto
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	grep = auto
+[core]
+	editor = vim
+[push]
+	default = matching
+[credential "https://github.com"]
+    username = rthrmt
+[credential]
+	helper = /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[alias]
+    dt = difftool
