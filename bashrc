@@ -60,7 +60,7 @@ alias tree='tree -C'
 alias enw='emacs -nw'
 alias tmux='tmux -2'
 alias gst='git status'
-alias vim='nvim'
+#alias vim='nvim'
 
 unset LESSCHARSET
 #--------------------------------------
