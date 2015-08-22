@@ -68,7 +68,5 @@ unset LESSCHARSET
 #--------------------------------------
 
 LESS=-asrRix8
-
 EDITOR=nvim
-
 export TERM=xterm-256color
