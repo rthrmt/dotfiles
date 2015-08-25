@@ -270,11 +270,6 @@ let g:rainbow_conf = {
     \   }
     \}
 
-
-" Settings for Golden-Ratio
-" git clone git://github.com/roman/golden-ratio.git ~/.vim/bundle/golden-ratio
-let g:loaded_golden_ratio = 1
-
 " Settings for tagbar
 nmap <F8> :TagbarToggle<CR>
 
