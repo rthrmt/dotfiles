@@ -2,7 +2,7 @@ set runtimepath+=~/.dotfiles/
 
 " First Pathogen
 runtime bundle/pathogen/autoload/pathogen.vim
-execute pathogen#infect('bundle/{}')
+execute pathogen#infect('~/.dotfiles/bundle/{}')
 Helptags
 
 " Enable syntax highlighting
@@ -232,8 +232,9 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+nmap <F10> :SyntasticToggleMode<CR>
 
 "" Settings for Nerdtree
 "" git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle
@@ -276,3 +277,6 @@ let g:loaded_golden_ratio = 1
 
 " Settings for tagbar
 nmap <F8> :TagbarToggle<CR>
+
+" Settings for neocomplete
+let g:neocomplete#enable_at_startup = 1
