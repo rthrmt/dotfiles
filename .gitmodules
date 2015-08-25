@@ -43,3 +43,6 @@
 [submodule "bundle/neocomplete"]
 	path = bundle/neocomplete
 	url = https://github.com/Shougo/neocomplete.vim.git
+[submodule "bundle/goldenview"]
+	path = bundle/goldenview
+	url = https://github.com/zhaocai/GoldenView.Vim.git

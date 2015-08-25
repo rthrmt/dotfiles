@@ -275,3 +275,7 @@ nmap <F8> :TagbarToggle<CR>
 
 " Settings for neocomplete
 let g:neocomplete#enable_at_startup = 1
+
+" Settings for GoldenView
+let g:goldenview__enable_default_mapping = 0
+nmap <silent> <C-g> <Plug>GoldenViewSplit
