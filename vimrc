@@ -63,6 +63,13 @@ noremap <C-Y> :update<CR>
 vnoremap <C-Y> <C-C>:update<CR>
 inoremap <C-Y> <C-O>:update<CR>
 
+" Move lines with Alt+j/k
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+inoremap <C-j> <Esc>:m .+1<CR>==gi
+inoremap <C-k> <Esc>:m .-2<CR>==gi
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
 
 " Quick quit command
 noremap <Leader>e :quit<CR>  " Quit current window
