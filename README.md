@@ -12,7 +12,8 @@ DOWNLOAD SUBMODULES:
     git submodule update --init --recursive
     # --recursive because of jedi inside of jedi-vim
 
-NOTES:
+INSTALL FONTS:
+(installs powerline patched fonts)
 
-    Install patched fonts for vim-airline:
-        https://github.com/powerline/fonts
+    .cd ~/.dotfiles
+    .setup_fonts.sh
