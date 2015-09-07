@@ -1,0 +1,8 @@
+* set wanted values in /etc/hdparm.conf
+* add /lib/systemd/system-sleep/hdparm.sh with
+
+        #!/bin/sh
+        /usr/lib/pm-utils/sleep.d/95hdparm-apm true
+
+    and make it executable
+
