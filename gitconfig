@@ -12,12 +12,6 @@
 	editor = vim
 [push]
 	default = matching
-[credential "https://github.com"]
-    username = rthrmt
-[credential "https://bitbucket.org"]
-    username = arthurmatei
-[credential]
-	helper = /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring
 [diff]
 	tool = vimdiff
 [merge]
