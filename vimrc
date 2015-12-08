@@ -29,6 +29,9 @@ set cursorline
 " Set wildmenu
 set wildmenu
 
+" Set Autoindent (let's see if it's worth it)
+set autoindent
+
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
 
