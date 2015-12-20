@@ -17,10 +17,17 @@ BLUE='\e[1;34m'
 cyan='\e[0;36m'
 CYAN='\e[1;36m'
 green='\e[0;32m'
-orange='\e[0;32m'
+GREEN='\e[1;32m'
+orange='\e[0;33m'
 NC='\e[0m' # No Color
 
-PROMPTCOL=${blue}
+# If Cinnamon is booted make the prompt light green, otherwise nice and blue
+if ps -e | grep -v grep | grep cinnamon > /dev/null
+then
+    PROMPTCOL=${GREEN}
+else
+    PROMPTCOL=${BLUE}
+fi
 
 # Only output text if the shell is interactive (otherwise scp and likewise will fail!)
 if [ "$PS1" ]
