@@ -29,6 +29,9 @@ else
     PROMPTCOL=${BLUE}
 fi
 
+# Make all output english
+export LC_ALL=C
+
 # Only output text if the shell is interactive (otherwise scp and likewise will fail!)
 if [ "$PS1" ]
 then

@@ -32,6 +32,8 @@ set wildmenu
 " Set Autoindent (let's see if it's worth it)
 set autoindent
 
+" Let splits appear on the right
+set splitright
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
 
