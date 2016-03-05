@@ -52,3 +52,6 @@
 [submodule "bundle/bubblegum"]
 	path = bundle/bubblegum
 	url = https://github.com/baskerville/bubblegum.git
+[submodule "bundle/vim-airline-themes"]
+	path = bundle/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes
