@@ -11,6 +11,10 @@ DOWNLOAD SUBMODULES:
     cd ~/.dotfiles
     git submodule update --init --recursive
     # --recursive because of jedi inside of jedi-vim
+    
+    # for updating
+    git submodule foreach git pull origin master
+
 
 INSTALL FONTS:
 (installs powerline patched fonts)
