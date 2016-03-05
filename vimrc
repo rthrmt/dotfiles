@@ -34,8 +34,9 @@ set autoindent
 
 " Let splits appear on the right
 set splitright
+
 " Automatic reloading of .vimrc
-autocmd! bufwritepost .vimrc source %
+" autocmd! bufwritepost .vimrc source %
 
 
 " Better copy & paste
@@ -112,17 +113,9 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 
 
 " Color scheme
-" mkdir -p ~/.vim/colors && cd ~/.vim/colors
-" For Wombat:
-" wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
-" For Molokai:
-" wget -O molokai.vim https://github.com/tomasr/molokai/blob/master/colors/molokai.vim
-" For Solarized:
-" look at https://github.com/altercation/vim-colors-solarized
-" remember to set Terminal color palette to solarized
-set t_Co=256
-colorscheme wombat256mod
-""set background=dark
+" set t_Co=256
+colorscheme bubblegum-256-dark
+set background=dark
 " if you want the theme timebased do:
 ""colorscheme solarized
 ""if strftime("%H") < 20
