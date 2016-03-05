@@ -49,3 +49,6 @@
 [submodule "bundle/delimitMate"]
 	path = bundle/delimitMate
 	url = https://github.com/Raimondi/delimitMate.git
+[submodule "bundle/bubblegum"]
+	path = bundle/bubblegum
+	url = https://github.com/baskerville/bubblegum.git
