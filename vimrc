@@ -5,6 +5,9 @@ runtime bundle/pathogen/autoload/pathogen.vim
 execute pathogen#infect('~/.dotfiles/bundle/{}')
 Helptags
 
+"set encoding (needed for powerline icons in vim-airline)
+set encoding=utf-8
+
 " Enable syntax highlighting
 " You need to reload this file for the change to apply
 filetype off
@@ -175,7 +178,11 @@ set smartcase
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-
+let g:airline_theme='bubblegum'
+" If you don't want the triangles in airline. Maybe because you don't want to
+" install patched fonts.
+"" let g:airline_left_sep=''
+"" let g:airline_right_sep=''
 
 " Settings for ctrlp
 " git clone https://github.com/kien/ctrlp.vim.git ~/.vim/ctrlp
