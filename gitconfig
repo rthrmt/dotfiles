@@ -20,3 +20,4 @@
 	prompt = false
 [alias]
     dt = difftool
+    canges = difftool HEAD
