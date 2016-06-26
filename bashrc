@@ -9,6 +9,9 @@ fi
 # Greeting, motd etc...
 #-----------------------
 
+# remove weird colors from ntfs-folders
+eval "`dircolors ~/.mydircolors`"
+
 # Define some colors first:
 red='\e[0;31m'
 RED='\e[1;31m'
@@ -29,17 +32,13 @@ else
     PROMPTCOL=${BLUE}
 fi
 
-# Make all output english
-export LC_ALL=C
+## Make all output english
+#export LANGUAGE=en
 
 # Only output text if the shell is interactive (otherwise scp and likewise will fail!)
 if [ "$PS1" ]
 then
-
-	# Looks best on a black background...
-	echo -e "${PROMPTCOL}This is BASH ${RED}${BASH_VERSION%.*}${PROMPTCOL} - DISPLAY on ${RED}$DISPLAY${NC}\n"
 	date
-	#fortune # makes our day a bit more fun.... :-)
 
 	# function to run upon exit of shell
 	function _exit()
