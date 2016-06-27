@@ -24,7 +24,14 @@ then
     mv ~/.tmux.conf ~/.tmux.conf.bak
 fi
 
+if [ -e ~/.mydircolors ]
+then
+    echo "~/.mydircolors already exists, moving to ~/.mydircolors.bak"
+    mv  ~/.mydircolors ~/.mydircolors.bak
+fi
+
 ln -s ~/.dotfiles/vimrc ~/.vimrc
 ln -s ~/.dotfiles/vimrc ~/.nvimrc
 ln -s ~/.dotfiles/bashrc ~/.bashrc
 ln -s ~/.dotfiles/tmux.conf ~/.tmux.conf
+ln -s ~/.dotfiles/mydircolors ~/.mydircolors
