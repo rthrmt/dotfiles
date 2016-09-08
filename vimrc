@@ -116,9 +116,10 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 
 
 " Color scheme
-" set t_Co=256
+set t_Co=256
 colorscheme bubblegum-256-dark
-set background=dark
+" somehow theme is broken when background is set
+" set background=dark
 " if you want the theme timebased do:
 ""colorscheme solarized
 ""if strftime("%H") < 20
