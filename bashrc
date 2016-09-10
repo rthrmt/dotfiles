@@ -55,7 +55,7 @@ fi
 
 # --> Replace instances of \W with \w in prompt functions below
 # --> to get display of full path name.
-PS1="\[${PROMPTCOL}\][\u@\h]\[$NC\] \w > "
+PS1="\[${PROMPTCOL}\][\u@\h]\[$NC\] \W > "
 
 #--------------------------------------
 # User specific aliases and functions
@@ -77,5 +77,5 @@ unset LESSCHARSET
 #--------------------------------------
 
 LESS=-asrRix8
-EDITOR=nvim
+EDITOR=vim
 export TERM=xterm-256color
