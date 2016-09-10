@@ -20,4 +20,5 @@
 	prompt = false
 [alias]
     dt = difftool
-    canges = difftool HEAD
+    changes = difftool HEAD
+    graph = --graph --online
