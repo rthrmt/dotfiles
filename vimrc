@@ -117,7 +117,7 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 
 " Color scheme
 set t_Co=256
-colorscheme bubblegum-256-dark
+colorscheme wombat256mod
 " somehow theme is broken when background is set
 " set background=dark
 " if you want the theme timebased do:
@@ -179,7 +179,7 @@ set smartcase
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='bubblegum'
+let g:airline_theme='wombat'
 " If you don't want the triangles in airline. Maybe because you don't want to
 " install patched fonts.
 "" let g:airline_left_sep=''
