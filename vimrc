@@ -15,8 +15,8 @@ filetype plugin indent on
 syntax on
 
 " Always show line numbers, but only in current window.
-set number
-:au WinEnter * :setlocal number
+set rnu 
+:au WinEnter * :setlocal rnu
 :au WinLeave * :setlocal nonumber
 
 " Automatically resize vertical splits.
@@ -238,17 +238,6 @@ inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
 "" wget -O ~/.vim/ftplugin/python_editing.vim http://www.vim.org/scripts/download_script.php ?src_id=5492
 "" set nofoldenable
 
-" Settings for Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-nmap <F10> :SyntasticToggleMode<CR>
-
 "" Settings for Nerdtree
 "" git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle
 "" Open Nerdtree when vim is opened without a file
@@ -288,6 +277,9 @@ nmap <F8> :TagbarToggle<CR>
 
 " Settings for neocomplete
 let g:neocomplete#enable_at_startup = 1
+
+" Settings for neomake
+autocmd! BufWritePost * Neomake
 
 " Settings for GoldenView
 let g:goldenview__enable_default_mapping = 0
