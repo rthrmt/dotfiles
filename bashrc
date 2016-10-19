@@ -76,6 +76,7 @@ unset LESSCHARSET
 # User environmental variables
 #--------------------------------------
 
-LESS=-asrRix8
-EDITOR=vim
+export LESS=-srRix8
+export EDITOR=vim
+export SUDO_EDITOR=vim
 export TERM=xterm-256color
