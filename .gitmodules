@@ -55,3 +55,6 @@
 [submodule "bundle/vim-material-theme"]
 	path = bundle/vim-material-theme
 	url = https://github.com/jdkanani/vim-material-theme
+[submodule "bundle/neomake"]
+	path = bundle/neomake
+	url = https://github.com/neomake/neomake.git
