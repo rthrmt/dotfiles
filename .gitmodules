@@ -58,3 +58,6 @@
 [submodule "bundle/neomake"]
 	path = bundle/neomake
 	url = https://github.com/neomake/neomake.git
+[submodule "bundle/vimtex"]
+	path = bundle/vimtex
+	url = https://github.com/lervag/vimtex.git
