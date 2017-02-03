@@ -31,9 +31,6 @@
 [submodule "bundle/gitgutter"]
 	path = bundle/gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
-[submodule "bundle/syntastic"]
-	path = bundle/syntastic
-	url = https://github.com/scrooloose/syntastic.git
 [submodule "bundle/xmledit"]
 	path = bundle/xmledit
 	url = https://github.com/sukima/xmledit.git
@@ -58,3 +55,6 @@
 [submodule "bundle/vim-material-theme"]
 	path = bundle/vim-material-theme
 	url = https://github.com/jdkanani/vim-material-theme
+[submodule "bundle/neomake"]
+	path = bundle/neomake
+	url = https://github.com/neomake/neomake.git
