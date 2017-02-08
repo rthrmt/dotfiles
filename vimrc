@@ -15,7 +15,7 @@ filetype plugin indent on
 syntax on
 
 " Always show line numbers, but only in current window.
-set rnu 
+set rnu
 set number
 :au WinEnter * :setlocal rnu number
 :au WinLeave * :setlocal nonumber nornu
@@ -67,9 +67,9 @@ inoremap <C-n> :nohl<CR>
 
 
 " Quicksave command
-noremap <C-Y> :update<CR>
-vnoremap <C-Y> <C-C>:update<CR>
-inoremap <C-Y> <C-O>:update<CR>
+noremap <C-Y> :update<CR><ESC>
+vnoremap <C-Y> <C-C>:update<CR><ESC>
+inoremap <C-Y> <C-O>:update<CR><ESC>
 
 " " Move lines with Alt+j/k
 " nnoremap <C-j> :m .+1<CR>==
