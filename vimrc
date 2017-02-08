@@ -16,8 +16,9 @@ syntax on
 
 " Always show line numbers, but only in current window.
 set rnu 
-:au WinEnter * :setlocal rnu
-:au WinLeave * :setlocal nonumber
+set number
+:au WinEnter * :setlocal rnu number
+:au WinLeave * :setlocal nonumber nornu
 
 " Automatically resize vertical splits.
 "" :au WinEnter * :set winfixheight
@@ -25,9 +26,6 @@ set rnu
 
 " Let the cursor never reach the end of the screen
 set scrolloff=10
-
-" Hightlight current line
-set cursorline
 
 " Set wildmenu
 set wildmenu
@@ -57,6 +55,7 @@ set bs=2     " make backspace behave like normal again
 
 " Rebind <Leader> key
 let mapleader = ","
+let maplocalleader = "-"
 
 
 " Bind nohl
@@ -117,7 +116,11 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 
 " Color scheme
 "set t_Co=256
-colorscheme bubblegum-256-dark
+set background=dark
+set termguicolors
+colorscheme breezy
+set cursorline
+hi CursorLine cterm=NONE ctermbg=236
 "colorscheme wombat256mod
 " somehow theme is broken when background is set
 " set background=dark
@@ -132,12 +135,12 @@ colorscheme bubblegum-256-dark
 ""endif
 
 
-" Showing line numbers and length
-set number  " show line numbers (already set at the top)
-set tw=79   " width of document (used by gd)
-set fo-=t   " don't automatically wrap text when typing
-set colorcolumn=80
-highlight ColorColumn ctermbg=236
+" " Showing line numbers and length
+" set number  " show line numbers (already set at the top)
+" set tw=79   " width of document (used by gd)
+" set fo-=t   " don't automatically wrap text when typing
+" set colorcolumn=80
+" highlight ColorColumn ctermbg=236
 
 " Set soft line wraps
 set wrap
@@ -180,7 +183,7 @@ set smartcase
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='tomorrow'
+let g:airline_theme='breezy'
 " If you don't want the triangles in airline. Maybe because you don't want to
 " install patched fonts.
 "" let g:airline_left_sep=''
@@ -276,7 +279,8 @@ let g:rainbow_conf = {
 " Settings for tagbar
 nmap <F8> :TagbarToggle<CR>
 
-" Settings for neocomplete
+" Settings for neocomplete (set to 0 if neocomplete complains about missing
+" lua)
 let g:neocomplete#enable_at_startup = 1
 
 " Settings for neomake
@@ -285,3 +289,29 @@ autocmd! BufWritePost * Neomake
 " Settings for GoldenView
 let g:goldenview__enable_default_mapping = 0
 nmap <silent> <C-g> <Plug>GoldenViewSplit
+
+" Settings for vimtex
+let g:vimtex_view_general_viewer = 'okular'
+let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+let g:vimtex_view_general_options_latexmk = '--unique'
+
+let g:vimtex_latexmk_continuous = 1
+nmap <F5> :VimtexCompileToggle<CR>
+
+if !exists('g:neocomplete#sources#omni#input_patterns')
+let g:neocomplete#sources#omni#input_patterns = {}
+endif
+let g:neocomplete#sources#omni#input_patterns.tex =
+    \ '\v\\%('
+    \ . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+    \ . '|\a*ref%(\s*\{[^}]*|range\s*\{[^,}]*%(}\{)?)'
+    \ . '|hyperref\s*\[[^]]*'
+    \ . '|includegraphics\*?%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+    \ . '|%(include%(only)?|input)\s*\{[^}]*'
+    \ . '|\a*(gls|Gls|GLS)(pl)?\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+    \ . '|includepdf%(\s*\[[^]]*\])?\s*\{[^}]*'
+    \ . '|includestandalone%(\s*\[[^]]*\])?\s*\{[^}]*'
+    \ . ')'
+"autocmd FileType tex :VimtexCompile
+" Settings for delimitMate
+"let delimitMate_autoclose = 0
