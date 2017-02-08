@@ -146,8 +146,11 @@ hi CursorLine cterm=NONE ctermbg=236
 set wrap
 set linebreak
 set nolist
-set showbreak=...>
+"set showbreak=...>
+set breakindent
 
+nnoremap j gj
+nnoremap k gk
 
 " easier formatting of paragraphs
 vmap Q gq
