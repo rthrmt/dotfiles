@@ -332,3 +332,5 @@ let g:neocomplete#sources#omni#input_patterns.tex =
 ""Settings for AsyncRun
 "async make runs (Gpush and Gfetch run async)
 command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
+"show status in airline
+let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
