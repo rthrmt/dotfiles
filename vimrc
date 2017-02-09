@@ -1,11 +1,6 @@
-""set runtimepath+=~/.dotfiles/
-""
-""" First Pathogen
-""runtime bundle/pathogen/autoload/pathogen.vim
-""execute pathogen#infect('~/.dotfiles/bundle/{}')
-""Helptags
 
-" Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
+"" Plugins to download
+
 call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
@@ -46,7 +41,9 @@ Plug 'jdkanani/vim-material-theme'
 
 Plug 'neomake/neomake'
 
-Plug 'lervag/vimtex'
+Plug 'lervag/vimtex', { 'for': ['tex', 'latex'] }
+
+Plug 'skywind3000/asyncrun.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -84,7 +81,7 @@ set autoindent
 set splitright
 
 " Automatic reloading of .vimrc
-" autocmd! bufwritepost .vimrc source %
+autocmd! bufwritepost .vimrc source %
 
 
 " Better copy & paste
@@ -331,3 +328,7 @@ let g:neocomplete#sources#omni#input_patterns.tex =
     \ . '|includepdf%(\s*\[[^]]*\])?\s*\{[^}]*'
     \ . '|includestandalone%(\s*\[[^]]*\])?\s*\{[^}]*'
     \ . ')'
+
+""Settings for AsyncRun
+"async make runs (Gpush and Gfetch run async)
+command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
