@@ -1,22 +1,16 @@
-INSTALLATION:
+### Installation
 
     git clone https://github.com/rthrmt/dotfiles ~/.dotfiles
 
-CREATE SYMLINKS:
+### Create Symlinks:
 
     run create_symlink.sh
 
-DOWNLOAD SUBMODULES:
+### Download and install vim-plug
 
-    cd ~/.dotfiles
-    git submodule update --init --recursive
-    # --recursive because of jedi inside of jedi-vim
-    
-    # for updating
-    git submodule foreach git pull origin master
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-
-INSTALL FONTS:
+### Install Fonts:
 (installs powerline patched fonts)
 
     .cd ~/.dotfiles
