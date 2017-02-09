@@ -1,9 +1,56 @@
-set runtimepath+=~/.dotfiles/
+""set runtimepath+=~/.dotfiles/
+""
+""" First Pathogen
+""runtime bundle/pathogen/autoload/pathogen.vim
+""execute pathogen#infect('~/.dotfiles/bundle/{}')
+""Helptags
 
-" First Pathogen
-runtime bundle/pathogen/autoload/pathogen.vim
-execute pathogen#infect('~/.dotfiles/bundle/{}')
-Helptags
+" Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
+call plug#begin('~/.vim/plugged')
+
+" Make sure you use single quotes
+
+Plug 'fneu/breezy'
+
+Plug 'baskerville/bubblegum'
+
+Plug 'Raimondi/delimitMate'
+
+Plug 'tpope/vim-fugitive'
+
+Plug 'airblade/vim-gitgutter'
+
+Plug 'zhaocai/GoldenView.Vim'
+
+Plug 'bling/vim-airline'
+
+Plug 'michalbachowski/vim-wombat256mod'
+
+Plug 'tomasr/molokai'
+
+Plug 'luochen1990/rainbow'
+
+Plug 'scrooloose/nerdtree'
+
+Plug 'scrooloose/nerdcommenter'
+
+Plug 'majutsushi/tagbar'
+
+Plug 'tpope/vim-surround'
+
+Plug 'Shougo/neocomplete.vim'
+
+Plug 'vim-airline/vim-airline-themes'
+
+Plug 'jdkanani/vim-material-theme'
+
+Plug 'neomake/neomake'
+
+Plug 'lervag/vimtex'
+
+" Initialize plugin system
+call plug#end()
+
 
 "set encoding (needed for powerline icons in vim-airline)
 set encoding=utf-8
