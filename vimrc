@@ -4,10 +4,11 @@
 call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
+Plug 'junegunn/vim-plug'
 
 Plug 'fneu/breezy'
 
-Plug 'baskerville/bubblegum'
+"Plug 'baskerville/bubblegum'
 
 Plug 'Raimondi/delimitMate'
 
@@ -19,13 +20,13 @@ Plug 'zhaocai/GoldenView.Vim'
 
 Plug 'bling/vim-airline'
 
-Plug 'michalbachowski/vim-wombat256mod'
+"Plug 'michalbachowski/vim-wombat256mod'
 
-Plug 'tomasr/molokai'
+"Plug 'tomasr/molokai'
 
 Plug 'luochen1990/rainbow'
 
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle'] }
 
 Plug 'scrooloose/nerdcommenter'
 
@@ -37,7 +38,7 @@ Plug 'Shougo/neocomplete.vim'
 
 Plug 'vim-airline/vim-airline-themes'
 
-Plug 'jdkanani/vim-material-theme'
+"Plug 'jdkanani/vim-material-theme'
 
 Plug 'neomake/neomake'
 
@@ -313,6 +314,7 @@ nmap <silent> <C-g> <Plug>GoldenViewSplit
 let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 let g:vimtex_view_general_options_latexmk = '--unique'
+let g:vimtex_quickfix_ignored_warnings = [ 'Use either `` or' ]
 
 if !exists('g:neocomplete#sources#omni#input_patterns')
 let g:neocomplete#sources#omni#input_patterns = {}
@@ -333,4 +335,4 @@ let g:neocomplete#sources#omni#input_patterns.tex =
 "async make runs (Gpush and Gfetch run async)
 command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
 "show status in airline
-let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
+"let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
