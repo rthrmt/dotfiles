@@ -64,10 +64,10 @@ filetype plugin indent on
 syntax on
 
 " Always show line numbers, but only in current window.
-set rnu
+"set rnu
 set number
-:au WinEnter * :setlocal number rnu
-:au WinLeave * :setlocal nonumber nornu
+:au WinEnter * :setlocal number "rnu
+:au WinLeave * :setlocal nonumber "nornu
 
 " Automatically resize vertical splits.
 "" :au WinEnter * :set winfixheight
