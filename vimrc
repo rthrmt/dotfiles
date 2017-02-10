@@ -30,7 +30,7 @@ Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle'] }
 
 Plug 'scrooloose/nerdcommenter'
 
-Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar' ", { 'on': ['TagbarToggle'] }
 
 Plug 'tpope/vim-surround'
 
@@ -45,6 +45,10 @@ Plug 'neomake/neomake'
 Plug 'lervag/vimtex', { 'for': ['tex', 'latex'] }
 
 Plug 'skywind3000/asyncrun.vim'
+
+Plug 'bling/vim-bufferline'
+
+Plug 'ctrlpvim/ctrlp.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -237,13 +241,6 @@ let g:airline_theme='breezy'
 "" let g:airline_left_sep=''
 "" let g:airline_right_sep=''
 
-" Settings for jedi-vim
-" cd ~/.vim/bundle
-" git clone git://github.com/davidhalter/jedi-vim.git
-let g:jedi#usages_command = "<leader>z"
-let g:jedi#popup_on_dot = 0
-let g:jedi#popup_select_first = 0
-map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
 
 " Better navigating through omnicomplete option list
 " See http://stackoverflow.com/questions/2170023/how-to-map-keys-for-popup-menu-in-vim
@@ -336,3 +333,7 @@ let g:neocomplete#sources#omni#input_patterns.tex =
 command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
 "show status in airline
 "let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
+
+
+"" Settings for CtrlP
+let g:ctrl_cmd = 'CtrlPMixed'
