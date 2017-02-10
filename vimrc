@@ -122,6 +122,8 @@ noremap <CR> a<CR><ESC>
 "vnoremap <C-Y> <C-C>:update<CR><ESC>
 "inoremap <C-Y> <C-O>:update<CR><ESC>
 
+noremap <Leader>w :w<CR>
+
 " " Move lines with Alt+j/k
 " nnoremap <C-j> :m .+1<CR>==
 " nnoremap <C-k> :m .-2<CR>==
