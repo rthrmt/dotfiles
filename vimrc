@@ -30,7 +30,7 @@ Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle'] }
 
 Plug 'scrooloose/nerdcommenter'
 
-Plug 'majutsushi/tagbar' ", { 'on': ['TagbarToggle'] }
+Plug 'majutsushi/tagbar' , { 'on': ['TagbarToggle'] }
 
 Plug 'tpope/vim-surround'
 
@@ -66,7 +66,7 @@ syntax on
 " Always show line numbers, but only in current window.
 set rnu
 set number
-:au WinEnter * :setlocal rnu number
+:au WinEnter * :setlocal number rnu
 :au WinLeave * :setlocal nonumber nornu
 
 " Automatically resize vertical splits.
@@ -114,11 +114,13 @@ noremap <C-n> :nohl<CR>
 vnoremap <C-n> :nohl<CR>
 inoremap <C-n> :nohl<CR>
 
+" Break a line in normalmode with <CR>
+noremap <CR> a<CR><ESC>
 
 " Quicksave command
-noremap <C-Y> :update<CR><ESC>
-vnoremap <C-Y> <C-C>:update<CR><ESC>
-inoremap <C-Y> <C-O>:update<CR><ESC>
+"noremap <C-Y> :update<CR><ESC>
+"vnoremap <C-Y> <C-C>:update<CR><ESC>
+"inoremap <C-Y> <C-O>:update<CR><ESC>
 
 " " Move lines with Alt+j/k
 " nnoremap <C-j> :m .+1<CR>==
@@ -168,8 +170,8 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 set background=dark
 set termguicolors
 colorscheme breezy
-set cursorline
-hi CursorLine cterm=NONE ctermbg=236
+"set cursorline
+"hi CursorLine cterm=NONE ctermbg=236
 "colorscheme wombat256mod
 " somehow theme is broken when background is set
 " set background=dark
@@ -236,6 +238,7 @@ set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='breezy'
+let g:airline#extensions#tagbar#enabled = 0
 " If you don't want the triangles in airline. Maybe because you don't want to
 " install patched fonts.
 "" let g:airline_left_sep=''
@@ -311,7 +314,7 @@ nmap <silent> <C-g> <Plug>GoldenViewSplit
 let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 let g:vimtex_view_general_options_latexmk = '--unique'
-let g:vimtex_quickfix_ignored_warnings = [ 'Use either `` or' ]
+let g:vimtex_quickfix_ignored_warnings = [ 'Use either' ]
 
 if !exists('g:neocomplete#sources#omni#input_patterns')
 let g:neocomplete#sources#omni#input_patterns = {}
