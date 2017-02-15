@@ -12,7 +12,7 @@ Plug 'fneu/breezy'
 
 Plug 'Raimondi/delimitMate'
 
-Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive', { 'on': ['Gstatus'] }
 
 Plug 'airblade/vim-gitgutter'
 
@@ -120,7 +120,7 @@ vnoremap <C-n> :nohl<CR>
 inoremap <C-n> :nohl<CR>
 
 " Break a line in normalmode with <CR>
-noremap <CR> a<CR><ESC>
+noremap <CR> i<CR><ESC>
 
 " Quicksave command
 "noremap <C-Y> :update<CR><ESC>
