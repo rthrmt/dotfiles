@@ -24,7 +24,7 @@ Plug 'bling/vim-airline'
 
 "Plug 'tomasr/molokai'
 
-Plug 'luochen1990/rainbow'
+Plug 'luochen1990/rainbow', { 'on': ['RainbowToggle'] }
 
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle'] }
 
