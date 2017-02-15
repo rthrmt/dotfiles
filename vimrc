@@ -34,7 +34,9 @@ Plug 'majutsushi/tagbar' , { 'on': ['TagbarToggle'] }
 
 Plug 'tpope/vim-surround'
 
-Plug 'Shougo/neocomplete.vim'
+"Plug 'Shougo/neocomplete.vim'
+
+Plug 'Shougo/deoplete.nvim'
 
 Plug 'vim-airline/vim-airline-themes'
 
@@ -303,7 +305,10 @@ nmap <F8> :TagbarToggle<CR>
 
 " Settings for neocomplete (set to 0 if neocomplete complains about missing
 " lua)
-let g:neocomplete#enable_at_startup = 1
+"let g:neocomplete#enable_at_startup = 1
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
 
 " Settings for neomake
 autocmd! BufWritePost * Neomake
@@ -318,20 +323,32 @@ let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 let g:vimtex_view_general_options_latexmk = '--unique'
 let g:vimtex_quickfix_ignored_warnings = [ 'Use either' ]
 
-if !exists('g:neocomplete#sources#omni#input_patterns')
-let g:neocomplete#sources#omni#input_patterns = {}
+"if !exists('g:neocomplete#sources#omni#input_patterns')
+"let g:neocomplete#sources#omni#input_patterns = {}
+"endif
+"let g:neocomplete#sources#omni#input_patterns.tex =
+"    \ '\v\\%('
+"    \ . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+"    \ . '|\a*ref%(\s*\{[^}]*|range\s*\{[^,}]*%(}\{)?)'
+"    \ . '|hyperref\s*\[[^]]*'
+"    \ . '|includegraphics\*?%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+"    \ . '|%(include%(only)?|input)\s*\{[^}]*'
+"    \ . '|\a*(gls|Gls|GLS)(pl)?\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+"    \ . '|includepdf%(\s*\[[^]]*\])?\s*\{[^}]*'
+"    \ . '|includestandalone%(\s*\[[^]]*\])?\s*\{[^}]*'
+"    \ . ')'
+
+if !exists('g:deoplete#omni#input_patterns')
+    let g:deoplete#omni#input_patterns = {}
 endif
-let g:neocomplete#sources#omni#input_patterns.tex =
-    \ '\v\\%('
-    \ . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-    \ . '|\a*ref%(\s*\{[^}]*|range\s*\{[^,}]*%(}\{)?)'
-    \ . '|hyperref\s*\[[^]]*'
-    \ . '|includegraphics\*?%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-    \ . '|%(include%(only)?|input)\s*\{[^}]*'
-    \ . '|\a*(gls|Gls|GLS)(pl)?\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-    \ . '|includepdf%(\s*\[[^]]*\])?\s*\{[^}]*'
-    \ . '|includestandalone%(\s*\[[^]]*\])?\s*\{[^}]*'
-    \ . ')'
+let g:deoplete#omni#input_patterns.tex =
+        \   '\\(?:'
+        \  .   '\w*cite\w*(?:\s*\[[^]]*\]){0,2}\s*{[^}]*'
+        \  .  '|\w*ref(?:\s*\{[^}]*|range\s*\{[^,}]*(?:}{)?)'
+        \  .  '|hyperref\s*\[[^]]*'
+        \  .  '|includegraphics\*?(?:\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+        \  .  '|(?:include(?:only)?|input)\s*\{[^}]*'
+        \  .')'
 
 ""Settings for AsyncRun
 "async make runs (Gpush and Gfetch run async)
