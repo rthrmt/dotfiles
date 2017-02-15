@@ -57,6 +57,7 @@ fi
 # --> to get display of full path name.
 PS1="\[${PROMPTCOL}\][\u@\h]\[$NC\] \W > "
 
+set -o vi
 #--------------------------------------
 # User specific aliases and functions
 #--------------------------------------
