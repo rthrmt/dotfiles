@@ -76,7 +76,7 @@ set number
 "" :au WinEnter * :wincmd =
 
 " Let the cursor never reach the end of the screen
-set scrolloff=10
+"set scrolloff=10
 
 " Set wildmenu
 set wildmenu
@@ -174,12 +174,11 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 set background=dark
 set termguicolors
 colorscheme breezy
+
 "set cursorline
 "hi CursorLine cterm=NONE ctermbg=236
-"colorscheme wombat256mod
-" somehow theme is broken when background is set
-" set background=dark
-" if you want the theme timebased do:
+
+"if you want the theme timebased do:
 ""colorscheme solarized
 ""if strftime("%H") < 20
 ""    if strftime("%H") > 8
@@ -217,7 +216,7 @@ set history=700
 set undolevels=700
 
 
-" Real programmers don't use TABs but spaces
+" Tabs vs spaces
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
