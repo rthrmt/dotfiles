@@ -373,6 +373,4 @@ command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
 
 
 """ Settings for denite
-imap <C-p> :Denite buffer file_old file_rec<CR>
-nmap <C-p> :Denite buffer file_old file_rec<CR>
-vmap <C-p> :Denite buffer file_old file_rec<CR>
+noremap! <C-p> :Denite buffer file_old file_rec<CR>
