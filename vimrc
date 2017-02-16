@@ -12,7 +12,7 @@ Plug 'fneu/breezy'
 
 Plug 'Raimondi/delimitMate'
 
-Plug 'tpope/vim-fugitive', { 'on': ['Gstatus'] }
+Plug 'tpope/vim-fugitive' ", { 'on': ['Gstatus'] }
 
 Plug 'airblade/vim-gitgutter'
 
@@ -28,7 +28,7 @@ Plug 'bling/vim-airline'
 
 Plug 'junegunn/rainbow_parentheses.vim'
 
-Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle'] }
+Plug 'scrooloose/nerdtree' , { 'on': 'NERDTreeToggle' }
 
 Plug 'scrooloose/nerdcommenter'
 
