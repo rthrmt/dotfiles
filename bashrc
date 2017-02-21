@@ -84,3 +84,6 @@ export SUDO_EDITOR=vim
 if [ -d "$HOME/.bin" ] ; then
   export PATH="$PATH:$HOME/.bin"
 fi
+
+# Uncomment if you want to stream audio to Nostromo
+#export PULSE_SERVER="tcp:192.168.1.42"
