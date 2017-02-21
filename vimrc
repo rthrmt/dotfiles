@@ -8,6 +8,8 @@ Plug 'junegunn/vim-plug'
 
 Plug 'fneu/breezy'
 
+Plug 'rakr/vim-one'
+
 "Plug 'baskerville/bubblegum'
 
 Plug 'Raimondi/delimitMate'
@@ -117,7 +119,7 @@ let maplocalleader = "-"
 " ``<C>`` stands for ``CTRL`` and therefore ``<C-n>`` stands for ``CTRL+n``
 noremap <C-n> :nohl<CR>
 vnoremap <C-n> :nohl<CR>
-inoremap <C-n> :nohl<CR>
+inoremap <C-n> <ESC>:nohl<CR>i
 
 " Break a line in normalmode with <CR>
 noremap <CR> i<CR><ESC>
@@ -176,7 +178,7 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 "set t_Co=256
 set background=dark
 set termguicolors
-colorscheme breezy
+colorscheme one
 
 "set cursorline
 "hi CursorLine cterm=NONE ctermbg=236
@@ -243,7 +245,7 @@ set smartcase
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='breezy'
+let g:airline_theme='one'
 let g:airline#extensions#tagbar#enabled = 0
 " If you don't want the triangles in airline. Maybe because you don't want to
 " install patched fonts.
@@ -369,7 +371,7 @@ endif
 "async make runs (Gpush and Gfetch run async)
 command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
 "show status in airline
-"let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
+let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
 
 
 """ Settings for denite
