@@ -60,6 +60,7 @@ Plug 'Shougo/denite.nvim'
 " Initialize plugin system
 call plug#end()
 
+set nomodeline
 
 "set encoding (needed for powerline icons in vim-airline)
 set encoding=utf-8
@@ -235,6 +236,7 @@ set incsearch
 set ignorecase
 set smartcase
 
+autocmd FileType tex,latex setlocal spell spelllang=en_us,en_gb,de_de
 
 " ============================================================================
 " Plugins
@@ -329,7 +331,8 @@ nmap <silent> <C-g> <Plug>GoldenViewSplit
 let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 let g:vimtex_view_general_options_latexmk = '--unique'
-let g:vimtex_quickfix_ignored_warnings = [ 'Use either' ]
+let g:vimtex_quickfix_ignored_warnings = []
+let g:tex_flavor = "latex"
 
 
 if has('nvim')
