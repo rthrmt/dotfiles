@@ -168,6 +168,8 @@ vnoremap <Leader>s :sort<CR>
 vnoremap < <gv  " better indentation
 vnoremap > >gv  " better indentation
 
+" let up-arrow show last commands (like in bash)
+nnoremap <up> :<up>
 
 " Show whitespace
 " MUST be inserted BEFORE the colorscheme command
