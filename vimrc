@@ -331,7 +331,7 @@ nmap <silent> <C-g> <Plug>GoldenViewSplit
 
 " Settings for vimtex
 let g:vimtex_view_general_viewer = 'okular'
-let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+let g:vimtex_view_general_options = '--noraise --unique file:@pdf\#src:@line@tex'
 let g:vimtex_view_general_options_latexmk = '--unique'
 let g:vimtex_quickfix_ignored_warnings = []
 let g:tex_flavor = "latex"
