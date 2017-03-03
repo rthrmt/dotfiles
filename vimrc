@@ -38,7 +38,10 @@ Plug 'majutsushi/tagbar' , { 'on': ['TagbarToggle'] }
 
 Plug 'tpope/vim-surround'
 
-Plug 'Shougo/neocomplete.vim'
+" hack to no load neocomplete in nvim
+if !has('nvim')
+    Plug 'Shougo/neocomplete.vim'
+endif
 
 Plug 'Shougo/deoplete.nvim'
 
@@ -315,7 +318,7 @@ nmap <F7> :NERDTreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
 
 " Settings for neocomplete/deoplete (set to 0 if neocomplete complains about missing
-" lua)
+" lua) seems to load neocpmplete in nvim anyway, fixed with hack at plugs abve
 if has('nvim')
     let g:deoplete#enable_at_startup = 1
 else
@@ -350,7 +353,7 @@ if has('nvim')
         \  .  '|(?:include(?:only)?|input)\s*\{[^}]*'
         \  .')'
 
-else
+elseif has('vim')
 
     if !exists('g:neocomplete#sources#omni#input_patterns')
         let g:neocomplete#sources#omni#input_patterns = {}
