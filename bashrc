@@ -71,6 +71,7 @@ alias enw='emacs -nw'
 alias tmux='tmux -2'
 alias gst='git status'
 #alias vim='nvim'
+alias vimtex='vim --servername VIM'
 
 unset LESSCHARSET
 #--------------------------------------
