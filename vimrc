@@ -109,6 +109,8 @@ set clipboard=unnamed
 set mouse=a  " on OSX press ALT and click
 set bs=2     " make backspace behave like normal again
 
+noremap <ScrollWheelUp> <C-y>
+noremap <ScrollWheelDown> <C-e>
 
 " Rebind <Leader> key
 let mapleader = ","
