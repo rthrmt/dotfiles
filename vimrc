@@ -76,9 +76,9 @@ syntax on
 
 " Always show line numbers, but only in current window.
 "set rnu
-set number
-:au WinEnter * :setlocal number "rnu
-:au WinLeave * :setlocal nonumber "nornu
+set nu rnu
+:au WinEnter * :setlocal nu rnu
+:au WinLeave * :setlocal nonu nornu
 
 " Automatically resize vertical splits.
 "" :au WinEnter * :set winfixheight
@@ -188,7 +188,7 @@ set background=dark
 set termguicolors
 colorscheme one
 
-"set cursorline
+set cursorline
 "hi CursorLine cterm=NONE ctermbg=236
 
 "if you want the theme timebased do:
@@ -384,4 +384,5 @@ let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status
 
 
 """ Settings for denite
-noremap! <C-p> :Denite buffer file_old file_rec<CR>
+noremap <C-p>b :Denite buffer<CR>
+noremap <C-p>f :Denite file_old file_rec<CR>
