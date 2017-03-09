@@ -17,22 +17,14 @@ call plug#begin('~/.vim/plugged')
 
 "Plug 'tomasr/molokai'
 
-Plug 'Raimondi/delimitMate'
-
-Plug 'Shougo/denite.nvim'
-
-Plug 'Shougo/deoplete.nvim'
-
-" hack to no load neocomplete in nvim
-if !has('nvim')
-    Plug 'Shougo/neocomplete.vim'
-endif
 
 Plug 'airblade/vim-gitgutter'
 
 Plug 'bling/vim-airline'
 
 Plug 'bling/vim-bufferline'
+
+Plug 'honza/vim-snippets'
 
 Plug 'fneu/breezy'
 
@@ -48,9 +40,22 @@ Plug 'majutsushi/tagbar' , { 'on': ['TagbarToggle'] }
 
 Plug 'neomake/neomake'
 
+Plug 'Raimondi/delimitMate'
+
 Plug 'rakr/vim-one'
 
 Plug 'scrooloose/nerdtree' , { 'on': 'NERDTreeToggle' }
+
+Plug 'Shougo/denite.nvim'
+
+Plug 'Shougo/deoplete.nvim'
+
+" hack to no load neocomplete in nvim
+if !has('nvim')
+    Plug 'Shougo/neocomplete.vim'
+endif
+
+Plug 'SirVer/ultisnips'
 
 Plug 'tomtom/tcomment_vim'
 
@@ -388,3 +393,12 @@ let g:surround_108 = "\\begin{\1environment: \1}\r\\end{\1\1}"
 """ Settings for denite
 noremap <C-p>b :Denite buffer<CR>
 noremap <C-p>f :Denite file_old file_rec<CR>
+
+" Trigger configuration. Do not use <tab> if you use
+" https://github.com/Valloric/YouCompleteMe.
+ let g:UltiSnipsExpandTrigger="<tab>"
+ let g:UltiSnipsJumpForwardTrigger="<c-b>"
+ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" " If you want :UltiSnipsEdit to split your window.
+" let g:UltiSnipsEditSplit="vertical"
