@@ -4,62 +4,66 @@
 call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
-Plug 'junegunn/vim-plug'
-
-Plug 'fneu/breezy'
-
-Plug 'rakr/vim-one'
 
 "Plug 'baskerville/bubblegum'
 
-Plug 'Raimondi/delimitMate'
+"Plug 'ctrlpvim/ctrlp.vim'
 
-Plug 'tpope/vim-fugitive' ", { 'on': ['Gstatus'] }
+"Plug 'jdkanani/vim-material-theme'
 
-Plug 'airblade/vim-gitgutter'
-
-Plug 'zhaocai/GoldenView.Vim'
-
-Plug 'bling/vim-airline'
+"Plug 'luochen1990/rainbow', { 'on': ['RainbowToggle'] }
 
 "Plug 'michalbachowski/vim-wombat256mod'
 
 "Plug 'tomasr/molokai'
 
-"Plug 'luochen1990/rainbow', { 'on': ['RainbowToggle'] }
+Plug 'Raimondi/delimitMate'
 
-Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'Shougo/denite.nvim'
 
-Plug 'scrooloose/nerdtree' , { 'on': 'NERDTreeToggle' }
-
-Plug 'scrooloose/nerdcommenter'
-
-Plug 'majutsushi/tagbar' , { 'on': ['TagbarToggle'] }
-
-Plug 'tpope/vim-surround'
+Plug 'Shougo/deoplete.nvim'
 
 " hack to no load neocomplete in nvim
 if !has('nvim')
     Plug 'Shougo/neocomplete.vim'
 endif
 
-Plug 'Shougo/deoplete.nvim'
+Plug 'airblade/vim-gitgutter'
 
-Plug 'vim-airline/vim-airline-themes'
-
-"Plug 'jdkanani/vim-material-theme'
-
-Plug 'neomake/neomake'
-
-Plug 'lervag/vimtex', { 'for': ['tex', 'latex'] }
-
-Plug 'skywind3000/asyncrun.vim'
+Plug 'bling/vim-airline'
 
 Plug 'bling/vim-bufferline'
 
-"Plug 'ctrlpvim/ctrlp.vim'
+Plug 'fneu/breezy'
 
-Plug 'Shougo/denite.nvim'
+Plug 'junegunn/rainbow_parentheses.vim'
+
+Plug 'junegunn/vim-easy-align'
+
+Plug 'junegunn/vim-plug'
+
+Plug 'lervag/vimtex', { 'for': ['tex', 'latex'] }
+
+Plug 'majutsushi/tagbar' , { 'on': ['TagbarToggle'] }
+
+Plug 'neomake/neomake'
+
+Plug 'rakr/vim-one'
+
+Plug 'scrooloose/nerdtree' , { 'on': 'NERDTreeToggle' }
+
+Plug 'skywind3000/asyncrun.vim'
+
+Plug 'tomtom/tcomment_vim'
+
+Plug 'tpope/vim-fugitive' ", { 'on': ['Gstatus'] }
+
+Plug 'tpope/vim-surround'
+
+Plug 'vim-airline/vim-airline-themes'
+
+Plug 'zhaocai/GoldenView.Vim'
+
 " Initialize plugin system
 call plug#end()
 
@@ -316,6 +320,12 @@ nmap <F7> :NERDTreeToggle<CR>
 " Settings for Rainbow Parantheses (Rainbow doesn't work in nvim)
 "RainbowParentheses
 
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
 " Settings for tagbar
 nmap <F8> :TagbarToggle<CR>
 
@@ -374,7 +384,7 @@ elseif has('vim')
 
 endif
 
-
+let g:surround_108 = "\\begin{\1environment: \1}\r\\end{\1\1}"
 
 ""Settings for AsyncRun
 "async make runs (Gpush and Gfetch run async)
