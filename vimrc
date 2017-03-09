@@ -52,8 +52,6 @@ Plug 'rakr/vim-one'
 
 Plug 'scrooloose/nerdtree' , { 'on': 'NERDTreeToggle' }
 
-Plug 'skywind3000/asyncrun.vim'
-
 Plug 'tomtom/tcomment_vim'
 
 Plug 'tpope/vim-fugitive' ", { 'on': ['Gstatus'] }
@@ -384,14 +382,8 @@ elseif has('vim')
 
 endif
 
+" surround for latex environments
 let g:surround_108 = "\\begin{\1environment: \1}\r\\end{\1\1}"
-
-""Settings for AsyncRun
-"async make runs (Gpush and Gfetch run async)
-command! -bang -nargs=* -complete=file Make AsyncRun -program=make @ <args>
-"show status in airline
-let g:airline_section_error = airline#section#create_right(['%{g:asyncrun_status}'])
-
 
 """ Settings for denite
 noremap <C-p>b :Denite buffer<CR>
