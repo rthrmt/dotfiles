@@ -9,7 +9,7 @@
 	interactive = auto
 	grep = auto
 [core]
-	editor = vim
+	editor = nvim
 [push]
 	default = matching
 [diff]
