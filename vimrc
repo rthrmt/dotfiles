@@ -135,7 +135,7 @@ vnoremap <C-n> :nohl<CR>
 inoremap <C-n> <ESC>:nohl<CR>i
 
 " Break a line in normalmode with <CR>
-noremap <CR> i<CR><ESC>
+" noremap <CR> i<CR><ESC>
 
 " Quicksave command
 "noremap <C-Y> :update<CR><ESC>
@@ -342,6 +342,7 @@ endif
 
 " Settings for neomake
 autocmd! BufWritePost * Neomake
+let g:neomake_tex_enabled_makers = []
 
 " Settings for GoldenView
 let g:goldenview__enable_default_mapping = 0
@@ -352,7 +353,11 @@ let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_view_general_options = '--noraise --unique file:@pdf\#src:@line@tex'
 let g:vimtex_view_general_options_latexmk = '--unique'
 let g:tex_flavor = "latex"
-
+let g:vimtex_latexmk_progname = "/usr/bin/nvr"
+let g:vimtex_quickfix_warnings = {
+          \ 'overfull' : 0,
+          \ 'underfull' : 0
+          \}
 
 if has('nvim')
 
