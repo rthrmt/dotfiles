@@ -398,6 +398,7 @@ let g:surround_108 = "\\begin{\1environment: \1}\r\\end{\1\1}"
 """ Settings for denite
 noremap <C-p>b :Denite buffer<CR>
 noremap <C-p>f :Denite file_old file_rec<CR>
+noremap <C-p> :Denite buffer file_old file_rec<CR>
 
 " Trigger configuration. Do not use <tab> if you use
 " https://github.com/Valloric/YouCompleteMe.
