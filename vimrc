@@ -1,3 +1,9 @@
+"" Function for conditional activation of plugins, see:
+" https://github.com/junegunn/vim-plug/wiki/faq#conditional-activation
+function! Cond(cond, ...)
+  let opts = get(a:000, 0, {})
+  return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
+endfunction
 
 "" Plugins to download
 
@@ -45,14 +51,11 @@ Plug 'rakr/vim-one'
 
 Plug 'scrooloose/nerdtree' , { 'on': 'NERDTreeToggle' }
 
-Plug 'Shougo/deoplete.nvim'
-
 Plug 'jdkanani/vim-material-theme'
 
-" hack to no load neocomplete in nvim
-if !has('nvim')
-    Plug 'Shougo/neocomplete.vim'
-endif
+Plug 'Shougo/deoplete.nvim' , Cond(has('nvim'))
+
+Plug 'Shougo/neocomplete.vim' , Cond(has('vim'))
 
 Plug 'SirVer/ultisnips'
 
@@ -323,11 +326,11 @@ nmap ga <Plug>(EasyAlign)
 nmap <F8> :TagbarToggle<CR>
 
 " Settings for neocomplete/deoplete (set to 0 if neocomplete complains about missing
-" lua) seems to load neocpmplete in nvim anyway, fixed with hack at plugs abve
+" lua) seems to load neocomplete in nvim anyway, fixed with hack at plugs above
 if has('nvim')
     let g:deoplete#enable_at_startup = 1
 else
-    let g:neocomplete#enable_at_startup = 1
+    let g:neocomplete#enable_at_startup = 0
 endif
 
 " Settings for neomake
@@ -349,6 +352,7 @@ let g:vimtex_quickfix_warnings = {
           \ 'underfull' : 0
           \}
 
+" neo-/deoplete patterns for completion with vimtex
 if has('nvim')
 
     if !exists('g:deoplete#omni#input_patterns')
