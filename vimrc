@@ -5,24 +5,23 @@ call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
 
-"Plug 'baskerville/bubblegum'
+" Plug 'baskerville/bubblegum'
 
-"Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'luochen1990/rainbow', { 'on': ['RainbowToggle'] }
 
-"Plug 'jdkanani/vim-material-theme'
+" Plug 'michalbachowski/vim-wombat256mod'
 
-"Plug 'luochen1990/rainbow', { 'on': ['RainbowToggle'] }
+Plug 'tomasr/molokai'
 
-"Plug 'michalbachowski/vim-wombat256mod'
-
-"Plug 'tomasr/molokai'
-
+" Plug 'Shougo/denite.nvim'
 
 Plug 'airblade/vim-gitgutter'
 
 Plug 'bling/vim-airline'
 
 Plug 'bling/vim-bufferline'
+
+Plug 'ctrlpvim/ctrlp.vim' , { 'on': ['CtrlP', 'CtrlPMixed']}
 
 Plug 'honza/vim-snippets'
 
@@ -46,9 +45,9 @@ Plug 'rakr/vim-one'
 
 Plug 'scrooloose/nerdtree' , { 'on': 'NERDTreeToggle' }
 
-Plug 'Shougo/denite.nvim'
-
 Plug 'Shougo/deoplete.nvim'
+
+Plug 'jdkanani/vim-material-theme'
 
 " hack to no load neocomplete in nvim
 if !has('nvim')
@@ -129,7 +128,6 @@ let maplocalleader = "-"
 
 " Bind nohl
 " Removes highlight of your last search
-" ``<C>`` stands for ``CTRL`` and therefore ``<C-n>`` stands for ``CTRL+n``
 noremap <C-n> :nohl<CR>
 vnoremap <C-n> :nohl<CR>
 inoremap <C-n> <ESC>:nohl<CR>i
@@ -156,9 +154,7 @@ noremap <Leader>w :w<CR>
 noremap <Leader>e :quit<CR>  " Quit current window
 noremap <Leader>E :qa!<CR>   " Quit all windows
 
-
-" bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
-" Every unnecessary keystroke that can be saved is good for your health :)
+" Easier window switching
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
@@ -190,10 +186,10 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 
 
 " Color scheme
-"set t_Co=256
+" set t_Co=256
 set background=dark
 set termguicolors
-colorscheme one
+colorscheme material-theme
 
 set cursorline
 "hi CursorLine cterm=NONE ctermbg=236
@@ -257,7 +253,6 @@ autocmd FileType tex,latex setlocal spell spelllang=en_us,en_gb,de_de
 " ============================================================================
 
 " Settings for vim-airline
-" git clone https://github.com/bling/vim-airline ~/.vim/bundle/vim-airline
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -287,15 +282,10 @@ inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
 inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
 
 "" Settings for Nerdtree
-"" git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle
-"" Open Nerdtree when vim is opened without a file
-" autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 nmap <F7> :NERDTreeToggle<CR>
 
 
 "" Settings for Rainbow
-"" git clone https://github.com/luochen1990/rainbow.git ~/.vim/budle/rainbow
 "let g:rainbow_active = 1
 "let g:rainbow_conf = {
 "    \   'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
@@ -321,7 +311,7 @@ nmap <F7> :NERDTreeToggle<CR>
 "    \}
 
 " Settings for Rainbow Parantheses (Rainbow doesn't work in nvim)
-"RainbowParentheses
+au VimEnter * RainbowParentheses
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -396,9 +386,9 @@ endif
 let g:surround_108 = "\\begin{\1environment: \1}\r\\end{\1\1}"
 
 """ Settings for denite
-noremap <C-p>b :Denite buffer<CR>
-noremap <C-p>f :Denite file_old file_rec<CR>
-noremap <C-p> :Denite buffer file_old file_rec<CR>
+" noremap <C-p>b :Denite buffer<CR>
+" noremap <C-p>f :Denite file_old file_rec<CR>
+" noremap <C-p> :Denite buffer file_old file_rec<CR>
 
 " Trigger configuration. Do not use <tab> if you use
 " https://github.com/Valloric/YouCompleteMe.
@@ -408,3 +398,6 @@ noremap <C-p> :Denite buffer file_old file_rec<CR>
 
 " " If you want :UltiSnipsEdit to split your window.
 " let g:UltiSnipsEditSplit="vertical"
+
+"CtrlP settings
+noremap <c-p> :CtrlPMixed<cr>
