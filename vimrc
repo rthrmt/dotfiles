@@ -21,6 +21,8 @@ Plug 'tomasr/molokai'
 
 " Plug 'Shougo/denite.nvim'
 
+Plug 'altercation/vim-colors-solarized'
+
 Plug 'airblade/vim-gitgutter'
 
 Plug 'bling/vim-airline'
@@ -55,7 +57,7 @@ Plug 'jdkanani/vim-material-theme'
 
 Plug 'Shougo/deoplete.nvim' , Cond(has('nvim'))
 
-Plug 'Shougo/neocomplete.vim' , Cond(has('vim'))
+Plug 'Shougo/neocomplete.vim' , Cond(!has('nvim'))
 
 Plug 'SirVer/ultisnips'
 
@@ -193,6 +195,7 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 set background=dark
 set termguicolors
 colorscheme material-theme
+" let g:solarized_termcolors = 256
 
 set cursorline
 "hi CursorLine cterm=NONE ctermbg=236
@@ -330,7 +333,7 @@ nmap <F8> :TagbarToggle<CR>
 if has('nvim')
     let g:deoplete#enable_at_startup = 1
 else
-    let g:neocomplete#enable_at_startup = 0
+    let g:neocomplete#enable_at_startup = 1
 endif
 
 " Settings for neomake
@@ -347,6 +350,7 @@ let g:vimtex_view_general_options = '--noraise --unique file:@pdf\#src:@line@tex
 let g:vimtex_view_general_options_latexmk = '--unique'
 let g:tex_flavor = "latex"
 let g:vimtex_latexmk_progname = "/usr/bin/nvr"
+let g:vimtex_quickfix_open_on_warning = 0
 let g:vimtex_quickfix_warnings = {
           \ 'overfull' : 0,
           \ 'underfull' : 0
