@@ -192,10 +192,10 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 
 " Color scheme
 " set t_Co=256
+" let g:solarized_termcolors = 256 " remove comment when using solarized
 set background=dark
 set termguicolors
-colorscheme material-theme
-" let g:solarized_termcolors = 256
+colorscheme one
 
 set cursorline
 "hi CursorLine cterm=NONE ctermbg=236
