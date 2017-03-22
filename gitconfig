@@ -10,6 +10,7 @@
 	grep = auto
 [core]
 	editor = nvim
+    quotepath = false
 [push]
 	default = matching
 [diff]
