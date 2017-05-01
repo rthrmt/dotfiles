@@ -71,6 +71,9 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'zhaocai/GoldenView.Vim'
 
+Plug 'zchee/deoplete-jedi'
+
+Plug 'davidhalter/jedi-vim'
 " Initialize plugin system
 call plug#end()
 
