@@ -349,7 +349,9 @@ let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_view_general_options = '--noraise --unique file:@pdf\#src:@line@tex'
 let g:vimtex_view_general_options_latexmk = '--unique'
 " let g:tex_flavor = "latex"
-let g:vimtex_compiler_progname = "nvr"
+if has('nvim')
+    let g:vimtex_compiler_progname = "nvr"
+endif
 " let g:vimtex_compiler_latexmk = { 'backend' : 'nvim' }
 let g:vimtex_quickfix_open_on_warning = 0
 let g:vimtex_quickfix_warnings = {
@@ -357,6 +359,7 @@ let g:vimtex_quickfix_warnings = {
           \ 'underfull' : 0,
           \ 'font' : 0
           \}
+let g:vimtex_quickfix_latexlog = {'fix_paths':0}
 
 " neo-/deoplete patterns for completion with vimtex
 if has('nvim')
