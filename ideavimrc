@@ -2,8 +2,6 @@
 let maplead = ","
 
 noremap <Leader>w :w<CR>
-vnoremap < <gv  " better indentation
-vnoremap > >gv  " better indentation
 
 set surround
 set showmode
