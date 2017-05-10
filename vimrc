@@ -73,7 +73,6 @@ Plug 'zhaocai/GoldenView.Vim'
 
 Plug 'zchee/deoplete-jedi'
 
-Plug 'davidhalter/jedi-vim'
 " Initialize plugin system
 call plug#end()
 
@@ -256,6 +255,7 @@ set ignorecase
 set smartcase
 
 autocmd FileType tex,latex setlocal spell spelllang=en_us,en_gb,de_de
+autocmd FileType python syn keyword pythonBuiltin self
 
 " ============================================================================
 " Plugins
@@ -340,8 +340,17 @@ else
 endif
 
 " Settings for neomake
+let g:neomake_place_signs = 1
+let g:neomake_open_list = 1
 autocmd! BufWritePost * Neomake
 let g:neomake_tex_enabled_makers = []
+
+"""" change depending on OS (this is for Arch)
+let g:neomake_python_enabled_makers =['pyflakes']
+let g:neomake_python_pyflakes_exe = 'pyflakes-python2'
+let g:neomake_python_flake8_exe = 'flake8-python2'
+let g:neomake_python_pylint_exe = 'pylint-python2'
+
 
 " Settings for GoldenView
 let g:goldenview__enable_default_mapping = 0
@@ -362,7 +371,8 @@ let g:vimtex_quickfix_warnings = {
           \ 'underfull' : 0,
           \ 'font' : 0
           \}
-let g:vimtex_quickfix_latexlog = {'fix_paths':0}
+" let g:vimtex_quickfix_latexlog = {'fix_paths':0} " not needed anymore with
+" neovim 0.2
 
 " neo-/deoplete patterns for completion with vimtex
 if has('nvim')
