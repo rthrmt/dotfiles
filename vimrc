@@ -104,7 +104,7 @@ set nu rnu
 "" :au WinEnter * :wincmd =
 
 " Let the cursor never reach the end of the screen
-"set scrolloff=10
+set scrolloff=10
 
 " Set wildmenu
 set wildmenu
@@ -194,9 +194,10 @@ nnoremap <up> :<up>
 
 " Show whitespace
 " MUST be inserted BEFORE the colorscheme command
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-au InsertLeave * match ExtraWhitespace /\s\+$/
-
+" autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+" au InsertLeave * match ExtraWhitespace /\s\+$/
+set list
+set lcs=trail:-
 
 " Color scheme
 " set t_Co=256
@@ -229,7 +230,6 @@ set cursorline
 " Set soft line wraps
 set wrap
 set linebreak
-set nolist
 "set showbreak=...>
 set breakindent
 
