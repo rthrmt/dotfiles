@@ -21,7 +21,7 @@ call plug#begin('~/.vim/plugged')
 
 " Plug 'luochen1990/rainbow', { 'on': ['RainbowToggle'] }
 
-" Plug 'michalbachowski/vim-wombat256mod'
+Plug 'michalbachowski/vim-wombat256mod'
 
 Plug 'tomasr/molokai'
 
@@ -49,7 +49,7 @@ Plug 'junegunn/vim-plug'
 
 Plug 'lervag/vimtex', { 'for': ['tex', 'latex'] }
 
-Plug 'majutsushi/tagbar' , { 'on': ['TagbarToggle'] }
+Plug 'majutsushi/tagbar' , { 'on': ['TagbarToggle', 'TagbarOpenAutoClose'] }
 
 Plug 'neomake/neomake'
 
@@ -219,12 +219,8 @@ set cursorline
 ""    set background=light
 ""endif
 
-
-" " Showing line numbers and length
-" set number  " show line numbers (already set at the top)
-" set tw=79   " width of document (used by gd)
-" set fo-=t   " don't automatically wrap text when typing
-" set colorcolumn=80
+" ColorColumn
+set colorcolumn=120
 " highlight ColorColumn ctermbg=236
 
 " Set soft line wraps
@@ -335,7 +331,7 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " Settings for tagbar
-nmap <F8> :TagbarToggle<CR>
+nmap <F8> :TagbarOpenAutoClose<CR>
 
 " Settings for neocomplete/deoplete (set to 0 if neocomplete complains about missing
 " lua) seems to load neocomplete in nvim anyway, fixed with hack at plugs above
@@ -347,15 +343,18 @@ endif
 
 " Settings for neomake
 let g:neomake_place_signs = 1
-let g:neomake_open_list = 1
+let g:neomake_open_list = 2
 autocmd! BufWritePost * Neomake
 let g:neomake_tex_enabled_makers = []
 
 """" change depending on OS (this is for Arch)
-let g:neomake_python_enabled_makers =['pyflakes']
-let g:neomake_python_pyflakes_exe = 'pyflakes-python2'
+" let g:neomake_python_pyflakes_exe = 'pyflakes-python2'
 let g:neomake_python_flake8_exe = 'flake8-python2'
-let g:neomake_python_pylint_exe = 'pylint-python2'
+let g:neomake_python_flake8_maker = {
+    \ 'args': ['--ignore=E501']
+    \ }
+let g:neomake_python_pylint_exe = 'pylint2'
+let g:neomake_python_enabled_makers =['flake8']
 
 
 " Settings for GoldenView
