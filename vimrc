@@ -21,13 +21,13 @@ call plug#begin('~/.vim/plugged')
 
 " Plug 'luochen1990/rainbow', { 'on': ['RainbowToggle'] }
 
-Plug 'michalbachowski/vim-wombat256mod'
+" Plug 'michalbachowski/vim-wombat256mod'
 
-Plug 'tomasr/molokai'
+" Plug 'tomasr/molokai'
 
 " Plug 'Shougo/denite.nvim'
 
-Plug 'altercation/vim-colors-solarized'
+" Plug 'altercation/vim-colors-solarized'
 
 Plug 'airblade/vim-gitgutter'
 
@@ -39,7 +39,7 @@ Plug 'ctrlpvim/ctrlp.vim' , { 'on': ['CtrlP', 'CtrlPMixed']}
 
 Plug 'honza/vim-snippets'
 
-Plug 'fneu/breezy'
+" Plug 'fneu/breezy'
 
 Plug 'junegunn/rainbow_parentheses.vim'
 
@@ -57,9 +57,11 @@ Plug 'Raimondi/delimitMate'
 
 Plug 'rakr/vim-one'
 
+Plug 'rakr/vim-two-firewatch'
+
 Plug 'scrooloose/nerdtree' , { 'on': 'NERDTreeToggle' }
 
-Plug 'jdkanani/vim-material-theme'
+" Plug 'jdkanani/vim-material-theme'
 
 Plug 'Shougo/deoplete.nvim' , Cond(has('nvim'))
 
@@ -78,7 +80,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'zhaocai/GoldenView.Vim'
 
 Plug 'zchee/deoplete-jedi'
-
 " Initialize plugin system
 call plug#end()
 
@@ -202,12 +203,12 @@ set lcs=trail:-
 " Color scheme
 " set t_Co=256
 " let g:solarized_termcolors = 256 " remove comment when using solarized
-set background=dark
+" set background=dark
 set termguicolors
-colorscheme one
+colorscheme two-firewatch
 
 set cursorline
-"hi CursorLine cterm=NONE ctermbg=236
+" hi CursorLine cterm=None ctermbg=238
 
 "if you want the theme timebased do:
 ""colorscheme solarized
@@ -256,6 +257,7 @@ set incsearch
 set ignorecase
 set smartcase
 
+autocmd FileType tex,latex set colorcolumn=
 autocmd FileType tex,latex setlocal spell spelllang=en_us,en_gb,de_de
 autocmd FileType python syn keyword pythonBuiltin self
 
@@ -267,8 +269,9 @@ autocmd FileType python syn keyword pythonBuiltin self
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='one'
+let g:airline_theme='twofirewatch'
 let g:airline#extensions#tagbar#enabled = 0
+let g:airline#extensions#bufferline#enabled = 0
 " If you don't want the triangles in airline. Maybe because you don't want to
 " install patched fonts.
 "" let g:airline_left_sep=''
@@ -365,7 +368,7 @@ nmap <silent> <C-g> <Plug>GoldenViewSplit
 let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_view_general_options = '--noraise --unique file:@pdf\#src:@line@tex'
 let g:vimtex_view_general_options_latexmk = '--unique'
-" let g:tex_flavor = "latex"
+let g:tex_flavor = "latex"
 if has('nvim')
     let g:vimtex_compiler_progname = "nvr"
 endif
@@ -382,24 +385,29 @@ let g:vimtex_quickfix_warnings = {
 " neo-/deoplete patterns for completion with vimtex
 if has('nvim')
 
-    if !exists('g:deoplete#omni#input_patterns')
-        let g:deoplete#omni#input_patterns = {}
-    endif
-    let g:deoplete#omni#input_patterns.tex =
-        \   '\\(?:'
-        \  .   '\w*cite\w*(?:\s*\[[^]]*\]){0,2}\s*{[^}]*'
-        \  .  '|\w*ref(?:\s*\{[^}]*|range\s*\{[^,}]*(?:}{)?)'
-        \  .  '|hyperref\s*\[[^]]*'
-        \  .  '|includegraphics\*?(?:\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-        \  .  '|(?:include(?:only)?|input)\s*\{[^}]*'
-        \  .')'
+if !exists('g:deoplete#omni#input_patterns')
+      let g:deoplete#omni#input_patterns = {}
+  endif
+  let g:deoplete#omni#input_patterns.tex = '\\(?:'
+        \ .  '\w*cite\w*(?:\s*\[[^]]*\]){0,2}\s*{[^}]*'
+        \ . '|\w*ref(?:\s*\{[^}]*|range\s*\{[^,}]*(?:}{)?)'
+        \ . '|hyperref\s*\[[^]]*'
+        \ . '|includegraphics\*?(?:\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+        \ . '|(?:include(?:only)?|input)\s*\{[^}]*'
+        \ . '|\w*(gls|Gls|GLS)(pl)?\w*(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+        \ . '|includepdf(\s*\[[^]]*\])?\s*\{[^}]*'
+        \ . '|includestandalone(\s*\[[^]]*\])?\s*\{[^}]*'
+        \ . '|usepackage(\s*\[[^]]*\])?\s*\{[^}]*'
+        \ . '|documentclass(\s*\[[^]]*\])?\s*\{[^}]*'
+        \ . '|\w*'
+\ .')'
 
 elseif has('vim')
 
-    if !exists('g:neocomplete#sources#omni#input_patterns')
-        let g:neocomplete#sources#omni#input_patterns = {}
-    endif
-    let g:neocomplete#sources#omni#input_patterns.tex =
+if !exists('g:neocomplete#sources#omni#input_patterns')
+    let g:neocomplete#sources#omni#input_patterns = {}
+  endif
+  let g:neocomplete#sources#omni#input_patterns.tex =
         \ '\v\\%('
         \ . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
         \ . '|\a*ref%(\s*\{[^}]*|range\s*\{[^,}]*%(}\{)?)'
@@ -409,7 +417,10 @@ elseif has('vim')
         \ . '|\a*(gls|Gls|GLS)(pl)?\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
         \ . '|includepdf%(\s*\[[^]]*\])?\s*\{[^}]*'
         \ . '|includestandalone%(\s*\[[^]]*\])?\s*\{[^}]*'
-        \ . ')'
+        \ . '|usepackage%(\s*\[[^]]*\])?\s*\{[^}]*'
+        \ . '|documentclass%(\s*\[[^]]*\])?\s*\{[^}]*'
+        \ . '|\a*'
+\ . ')'
 
 endif
 
