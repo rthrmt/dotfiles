@@ -33,7 +33,7 @@ Plug 'airblade/vim-gitgutter'
 
 Plug 'bling/vim-airline'
 
-Plug 'bling/vim-bufferline'
+" Plug 'bling/vim-bufferline'
 
 Plug 'ctrlpvim/ctrlp.vim' , { 'on': ['CtrlP', 'CtrlPMixed']}
 
@@ -203,11 +203,11 @@ set lcs=trail:-
 " Color scheme
 " set t_Co=256
 " let g:solarized_termcolors = 256 " remove comment when using solarized
-" set background=dark
+set background=dark
 set termguicolors
 colorscheme two-firewatch
 
-set cursorline
+" set cursorline
 " hi CursorLine cterm=None ctermbg=238
 
 "if you want the theme timebased do:
@@ -269,13 +269,14 @@ autocmd FileType python syn keyword pythonBuiltin self
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline_theme='twofirewatch'
 let g:airline#extensions#tagbar#enabled = 0
 let g:airline#extensions#bufferline#enabled = 0
 " If you don't want the triangles in airline. Maybe because you don't want to
 " install patched fonts.
-"" let g:airline_left_sep=''
-"" let g:airline_right_sep=''
+" let g:airline_left_sep='>'
+" let g:airline_right_sep='<'
 
 
 " Better navigating through omnicomplete option list
