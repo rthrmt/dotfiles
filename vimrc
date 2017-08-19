@@ -33,7 +33,7 @@ Plug 'airblade/vim-gitgutter'
 
 Plug 'bling/vim-airline'
 
-" Plug 'bling/vim-bufferline'
+Plug 'bling/vim-bufferline'
 
 Plug 'ctrlpvim/ctrlp.vim' , { 'on': ['CtrlP', 'CtrlPMixed']}
 
@@ -63,9 +63,13 @@ Plug 'scrooloose/nerdtree' , { 'on': 'NERDTreeToggle' }
 
 " Plug 'jdkanani/vim-material-theme'
 
-Plug 'Shougo/deoplete.nvim' , Cond(has('nvim'))
+" Plug 'Shougo/deoplete.nvim' , Cond(has('nvim'))
+"
+" Plug 'Shougo/neocomplete.vim' , Cond(!has('nvim'))
 
-Plug 'Shougo/neocomplete.vim' , Cond(!has('nvim'))
+Plug 'roxma/nvim-completion-manager'
+
+Plug 'roxma/vim-hug-neovim-rpc', Cond(!has('nvim'))
 
 Plug 'SirVer/ultisnips'
 
@@ -79,11 +83,11 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'zhaocai/GoldenView.Vim'
 
-Plug 'zchee/deoplete-jedi'
+" Plug 'zchee/deoplete-jedi'
 " Initialize plugin system
 call plug#end()
 
-set nomodeline
+" set nomodeline
 
 "set encoding (needed for powerline icons in vim-airline)
 set encoding=utf-8
@@ -201,28 +205,26 @@ set list
 set lcs=trail:-
 
 " Color scheme
-" set t_Co=256
+set t_Co=256
 " let g:solarized_termcolors = 256 " remove comment when using solarized
+"if you want the theme timebased do:
+" if strftime("%H") < 21
+"    if strftime("%H") > 8
+"        set background=light
+"    endif
+" else
+"    set background=dark
+" endif
+" set termguicolors
+colorscheme default
 set background=dark
-set termguicolors
-colorscheme two-firewatch
 
 " set cursorline
-" hi CursorLine cterm=None ctermbg=238
-
-"if you want the theme timebased do:
-""colorscheme solarized
-""if strftime("%H") < 20
-""    if strftime("%H") > 8
-""        set background=dark
-""    endif
-""else
-""    set background=light
-""endif
+hi CursorLine cterm=None ctermbg=238
 
 " ColorColumn
 set colorcolumn=120
-" highlight ColorColumn ctermbg=236
+highlight ColorColumn ctermbg=238
 
 " Set soft line wraps
 set wrap
@@ -257,9 +259,34 @@ set incsearch
 set ignorecase
 set smartcase
 
+" highlight IncSearch guifg='DarkOrange' guibg='White'
+hi SpellBad cterm=underline ctermfg=None ctermbg=None
+
 autocmd FileType tex,latex set colorcolumn=
 autocmd FileType tex,latex setlocal spell spelllang=en_us,en_gb,de_de
-autocmd FileType python syn keyword pythonBuiltin self
+augroup python
+    autocmd!
+    autocmd FileType python
+                \   syn keyword pythonSelf self
+                \ | highlight def link pythonSelf Special
+augroup end
+
+" function! InsertStatuslineColor(mode)
+"   if a:mode == 'i'
+"     hi statusline ctermfg=3
+"   elseif a:mode == 'r'
+"     hi statusline ctermfg=9
+"   else
+"     hi statusline ctermfg=4
+"   endif
+" endfunction
+"
+" au InsertEnter * call InsertStatuslineColor(v:insertmode)
+" au InsertChange * call InsertStatuslineColor(v:insertmode)
+" au InsertLeave * hi statusline ctermfg=231
+"
+" " default the statusline to green when entering Vim
+" hi statusline ctermfg=231
 
 " ============================================================================
 " Plugins
@@ -267,16 +294,19 @@ autocmd FileType python syn keyword pythonBuiltin self
 
 " Settings for vim-airline
 set laststatus=2
+set noshowmode
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline_theme='twofirewatch'
+let g:airline_theme='base16_colors'
 let g:airline#extensions#tagbar#enabled = 0
 let g:airline#extensions#bufferline#enabled = 0
-" If you don't want the triangles in airline. Maybe because you don't want to
-" install patched fonts.
-" let g:airline_left_sep='>'
-" let g:airline_right_sep='<'
+
+" " Bufferline settings
+let g:bufferline_echo = 0
+"   autocmd VimEnter *
+"     \ let &statusline='%{bufferline#refresh_status()}'
+" \ .bufferline#get_status_string()
 
 
 " Better navigating through omnicomplete option list
@@ -337,13 +367,13 @@ nmap ga <Plug>(EasyAlign)
 " Settings for tagbar
 nmap <F8> :TagbarOpenAutoClose<CR>
 
-" Settings for neocomplete/deoplete (set to 0 if neocomplete complains about missing
-" lua) seems to load neocomplete in nvim anyway, fixed with hack at plugs above
-if has('nvim')
-    let g:deoplete#enable_at_startup = 1
-else
-    let g:neocomplete#enable_at_startup = 1
-endif
+" " Settings for neocomplete/deoplete (set to 0 if neocomplete complains about missing
+" " lua) seems to load neocomplete in nvim anyway, fixed with hack at plugs above
+" if has('nvim')
+"     let g:deoplete#enable_at_startup = 1
+" else
+"     let g:neocomplete#enable_at_startup = 1
+" endif
 
 " Settings for neomake
 let g:neomake_place_signs = 1
@@ -355,7 +385,7 @@ let g:neomake_tex_enabled_makers = []
 " let g:neomake_python_pyflakes_exe = 'pyflakes-python2'
 let g:neomake_python_flake8_exe = 'flake8-python2'
 let g:neomake_python_flake8_maker = {
-    \ 'args': ['--ignore=E501']
+    \ 'args': ['--ignore=E501,F401,F841']
     \ }
 let g:neomake_python_pylint_exe = 'pylint2'
 let g:neomake_python_enabled_makers =['flake8']
@@ -380,50 +410,48 @@ let g:vimtex_quickfix_warnings = {
           \ 'underfull' : 0,
           \ 'font' : 0
           \}
-" let g:vimtex_quickfix_latexlog = {'fix_paths':0} " not needed anymore with
-" neovim 0.2
 
-" neo-/deoplete patterns for completion with vimtex
-if has('nvim')
-
-if !exists('g:deoplete#omni#input_patterns')
-      let g:deoplete#omni#input_patterns = {}
-  endif
-  let g:deoplete#omni#input_patterns.tex = '\\(?:'
-        \ .  '\w*cite\w*(?:\s*\[[^]]*\]){0,2}\s*{[^}]*'
-        \ . '|\w*ref(?:\s*\{[^}]*|range\s*\{[^,}]*(?:}{)?)'
-        \ . '|hyperref\s*\[[^]]*'
-        \ . '|includegraphics\*?(?:\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-        \ . '|(?:include(?:only)?|input)\s*\{[^}]*'
-        \ . '|\w*(gls|Gls|GLS)(pl)?\w*(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-        \ . '|includepdf(\s*\[[^]]*\])?\s*\{[^}]*'
-        \ . '|includestandalone(\s*\[[^]]*\])?\s*\{[^}]*'
-        \ . '|usepackage(\s*\[[^]]*\])?\s*\{[^}]*'
-        \ . '|documentclass(\s*\[[^]]*\])?\s*\{[^}]*'
-        \ . '|\w*'
-\ .')'
-
-elseif has('vim')
-
-if !exists('g:neocomplete#sources#omni#input_patterns')
-    let g:neocomplete#sources#omni#input_patterns = {}
-  endif
-  let g:neocomplete#sources#omni#input_patterns.tex =
-        \ '\v\\%('
-        \ . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-        \ . '|\a*ref%(\s*\{[^}]*|range\s*\{[^,}]*%(}\{)?)'
-        \ . '|hyperref\s*\[[^]]*'
-        \ . '|includegraphics\*?%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-        \ . '|%(include%(only)?|input)\s*\{[^}]*'
-        \ . '|\a*(gls|Gls|GLS)(pl)?\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-        \ . '|includepdf%(\s*\[[^]]*\])?\s*\{[^}]*'
-        \ . '|includestandalone%(\s*\[[^]]*\])?\s*\{[^}]*'
-        \ . '|usepackage%(\s*\[[^]]*\])?\s*\{[^}]*'
-        \ . '|documentclass%(\s*\[[^]]*\])?\s*\{[^}]*'
-        \ . '|\a*'
-\ . ')'
-
-endif
+" " neo-/deoplete patterns for completion with vimtex
+" if has('nvim')
+"
+" if !exists('g:deoplete#omni#input_patterns')
+"       let g:deoplete#omni#input_patterns = {}
+"   endif
+"   let g:deoplete#omni#input_patterns.tex = '\\(?:'
+"         \ .  '\w*cite\w*(?:\s*\[[^]]*\]){0,2}\s*{[^}]*'
+"         \ . '|\w*ref(?:\s*\{[^}]*|range\s*\{[^,}]*(?:}{)?)'
+"         \ . '|hyperref\s*\[[^]]*'
+"         \ . '|includegraphics\*?(?:\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+"         \ . '|(?:include(?:only)?|input)\s*\{[^}]*'
+"         \ . '|\w*(gls|Gls|GLS)(pl)?\w*(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+"         \ . '|includepdf(\s*\[[^]]*\])?\s*\{[^}]*'
+"         \ . '|includestandalone(\s*\[[^]]*\])?\s*\{[^}]*'
+"         \ . '|usepackage(\s*\[[^]]*\])?\s*\{[^}]*'
+"         \ . '|documentclass(\s*\[[^]]*\])?\s*\{[^}]*'
+"         \ . '|\w*'
+" \ .')'
+"
+" elseif has('vim')
+"
+" if !exists('g:neocomplete#sources#omni#input_patterns')
+"     let g:neocomplete#sources#omni#input_patterns = {}
+"   endif
+"   let g:neocomplete#sources#omni#input_patterns.tex =
+"         \ '\v\\%('
+"         \ . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+"         \ . '|\a*ref%(\s*\{[^}]*|range\s*\{[^,}]*%(}\{)?)'
+"         \ . '|hyperref\s*\[[^]]*'
+"         \ . '|includegraphics\*?%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+"         \ . '|%(include%(only)?|input)\s*\{[^}]*'
+"         \ . '|\a*(gls|Gls|GLS)(pl)?\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+"         \ . '|includepdf%(\s*\[[^]]*\])?\s*\{[^}]*'
+"         \ . '|includestandalone%(\s*\[[^]]*\])?\s*\{[^}]*'
+"         \ . '|usepackage%(\s*\[[^]]*\])?\s*\{[^}]*'
+"         \ . '|documentclass%(\s*\[[^]]*\])?\s*\{[^}]*'
+"         \ . '|\a*'
+" \ . ')'
+"
+" endif
 
 " surround for latex environments
 let g:surround_108 = "\\begin{\1environment: \1}\r\\end{\1\1}"
