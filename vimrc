@@ -41,7 +41,7 @@ Plug 'honza/vim-snippets'
 
 " Plug 'fneu/breezy'
 
-Plug 'junegunn/rainbow_parentheses.vim'
+" Plug 'junegunn/rainbow_parentheses.vim'
 
 Plug 'junegunn/vim-easy-align'
 
@@ -67,9 +67,9 @@ Plug 'scrooloose/nerdtree' , { 'on': 'NERDTreeToggle' }
 "
 " Plug 'Shougo/neocomplete.vim' , Cond(!has('nvim'))
 
-Plug 'roxma/nvim-completion-manager'
+" Plug 'roxma/nvim-completion-manager'
 
-Plug 'roxma/vim-hug-neovim-rpc', Cond(!has('nvim'))
+" Plug 'roxma/vim-hug-neovim-rpc', Cond(!has('nvim'))
 
 Plug 'SirVer/ultisnips'
 
@@ -81,9 +81,13 @@ Plug 'tpope/vim-surround'
 
 Plug 'vim-airline/vim-airline-themes'
 
-Plug 'zhaocai/GoldenView.Vim'
+" Plug 'zhaocai/GoldenView.Vim'
 
 " Plug 'zchee/deoplete-jedi'
+
+Plug 'Valloric/YouCompleteMe'
+
+
 " Initialize plugin system
 call plug#end()
 
@@ -98,11 +102,14 @@ filetype off
 filetype plugin indent on
 syntax on
 
+" Allow switching buffers without saving
+set hidden
+
 " Always show line numbers, but only in current window.
 "set rnu
-set nu rnu
-:au WinEnter * :setlocal nu rnu
-:au WinLeave * :setlocal nonu nornu
+set nu
+:au WinEnter * :setlocal nu
+:au WinLeave * :setlocal nonu
 
 " Automatically resize vertical splits.
 "" :au WinEnter * :set winfixheight
@@ -201,11 +208,11 @@ nnoremap <up> :<up>
 " MUST be inserted BEFORE the colorscheme command
 " autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 " au InsertLeave * match ExtraWhitespace /\s\+$/
-set list
+" set list
 set lcs=trail:-
 
 " Color scheme
-set t_Co=256
+" set t_Co=256
 " let g:solarized_termcolors = 256 " remove comment when using solarized
 "if you want the theme timebased do:
 " if strftime("%H") < 21
@@ -215,9 +222,15 @@ set t_Co=256
 " else
 "    set background=dark
 " endif
-" set termguicolors
-colorscheme default
+if (has("termguicolors"))
+    set termguicolors
+endif
+colorscheme two-firewatch
 set background=dark
+
+if has("one")
+    let g:one_allow_italics = 1
+endif
 
 " set cursorline
 hi CursorLine cterm=None ctermbg=238
@@ -246,11 +259,11 @@ set undolevels=700
 
 
 " Tabs vs spaces
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set shiftround
-set expandtab
+" set tabstop=4
+" set softtabstop=4
+" set shiftwidth=4
+" set shiftround
+" set expandtab
 
 
 " Make search case insensitive
@@ -298,7 +311,7 @@ set noshowmode
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline_theme='base16_colors'
+let g:airline_theme='twofirewatch'
 let g:airline#extensions#tagbar#enabled = 0
 let g:airline#extensions#bufferline#enabled = 0
 
@@ -356,7 +369,7 @@ nmap <F7> :NERDTreeToggle<CR>
 "    \}
 
 " Settings for Rainbow Parantheses (Rainbow doesn't work in nvim)
-au VimEnter * RainbowParentheses
+" au VimEnter * RainbowParentheses
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
