@@ -239,11 +239,11 @@ set undolevels=700
 
 
 " Tabs vs spaces
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set shiftround
-set expandtab
+" set tabstop=4
+" set softtabstop=4
+" set shiftwidth=4
+" set shiftround
+" set expandtab
 
 
 " Make search case insensitive
