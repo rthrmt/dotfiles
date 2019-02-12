@@ -288,24 +288,6 @@ let g:bufferline_echo = 0
 "     \ let &statusline='%{bufferline#refresh_status()}'
 " \ .bufferline#get_status_string()
 
-
-" Better navigating through omnicomplete option list
-" See http://stackoverflow.com/questions/2170023/how-to-map-keys-for-popup-menu-in-vim
-set completeopt=longest,menuone
-function! OmniPopup(action)
-    if pumvisible()
-        if a:action == 'j'
-            return "\<C-N>"
-        elseif a:action == 'k'
-            return "\<C-P>"
-        endif
-    endif
-    return a:action
-endfunction
-
-inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
-inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
-
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
 
@@ -335,9 +317,6 @@ let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_view_general_options = '--noraise --unique file:@pdf\#src:@line@tex'
 let g:vimtex_view_general_options_latexmk = '--unique'
 let g:tex_flavor = "latex"
-if has('nvim')
-    let g:vimtex_compiler_progname = "nvr"
-endif
 " let g:vimtex_compiler_latexmk = { 'backend' : 'nvim' }
 let g:vimtex_quickfix_open_on_warning = 0
 let g:vimtex_quickfix_warnings = {
@@ -345,6 +324,10 @@ let g:vimtex_quickfix_warnings = {
           \ 'underfull' : 0,
           \ 'font' : 0
           \}
+let g:vimtex_complete_bib = {
+	\ 'simple' : 1,
+	\ 'recursive' : 1
+	\}
 
 " surround for latex environments
 let g:surround_108 = "\\begin{\1environment: \1}\r\\end{\1\1}"
@@ -358,9 +341,9 @@ let g:surround_108 = "\\begin{\1environment: \1}\r\\end{\1\1}"
 " " If you want :UltiSnipsEdit to split your window.
 " let g:UltiSnipsEditSplit="vertical"
 
-set completeopt+=menuone
-set completeopt+=noinsert
-set completeopt+=preview
+" Better navigating through omnicomplete option list
+" See http://stackoverflow.com/questions/2170023/how-to-map-keys-for-popup-menu-in-vim
+set completeopt+=menuone,noselect,noinsert
 
 set shortmess+=c   " Shut off completion messages
 set belloff+=ctrlg " If Vim beeps during completion
