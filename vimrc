@@ -19,13 +19,11 @@ call plug#begin('~/.vim/plugged')
 
 " Plug 'baskerville/bubblegum'
 
-" Plug 'luochen1990/rainbow', { 'on': ['RainbowToggle'] }
+" Plug 'dracula/vim'
 
 " Plug 'michalbachowski/vim-wombat256mod'
 
 " Plug 'tomasr/molokai'
-
-" Plug 'Shougo/denite.nvim'
 
 " Plug 'altercation/vim-colors-solarized'
 
@@ -35,13 +33,9 @@ Plug 'bling/vim-airline'
 
 Plug 'bling/vim-bufferline'
 
-Plug 'ctrlpvim/ctrlp.vim' , { 'on': ['CtrlP', 'CtrlPMixed']}
-
 Plug 'honza/vim-snippets'
 
 " Plug 'fneu/breezy'
-
-Plug 'junegunn/rainbow_parentheses.vim'
 
 Plug 'junegunn/vim-easy-align'
 
@@ -59,17 +53,9 @@ Plug 'rakr/vim-one'
 
 Plug 'rakr/vim-two-firewatch'
 
-Plug 'scrooloose/nerdtree' , { 'on': 'NERDTreeToggle' }
-
 " Plug 'jdkanani/vim-material-theme'
 
-" Plug 'Shougo/deoplete.nvim' , Cond(has('nvim'))
-"
-" Plug 'Shougo/neocomplete.vim' , Cond(!has('nvim'))
-
-Plug 'roxma/nvim-completion-manager'
-
-Plug 'roxma/vim-hug-neovim-rpc', Cond(!has('nvim'))
+Plug 'lifepillar/vim-mucomplete'
 
 Plug 'SirVer/ultisnips'
 
@@ -81,9 +67,6 @@ Plug 'tpope/vim-surround'
 
 Plug 'vim-airline/vim-airline-themes'
 
-Plug 'zhaocai/GoldenView.Vim'
-
-" Plug 'zchee/deoplete-jedi'
 " Initialize plugin system
 call plug#end()
 
@@ -98,11 +81,18 @@ filetype off
 filetype plugin indent on
 syntax on
 
+" Allow switching buffers without saving
+set hidden
+
+" Rebind <Leader> key
+let mapleader = ","
+let maplocalleader = "-"
+
 " Always show line numbers, but only in current window.
 "set rnu
-set nu rnu
-:au WinEnter * :setlocal nu rnu
-:au WinLeave * :setlocal nonu nornu
+set nu
+:au WinEnter * :setlocal nu
+:au WinLeave * :setlocal nonu
 
 " Automatically resize vertical splits.
 "" :au WinEnter * :set winfixheight
@@ -139,10 +129,12 @@ set bs=2     " make backspace behave like normal again
 noremap <ScrollWheelUp> <C-y>
 noremap <ScrollWheelDown> <C-e>
 
-" Rebind <Leader> key
-let mapleader = ","
-let maplocalleader = "-"
+" Enable recursive finding
+set path+=**
+map <Leader>f :find 
 
+" Map search buffers
+map <Leader>b :b 
 
 " Bind nohl
 " Removes highlight of your last search
@@ -152,11 +144,6 @@ inoremap <C-n> <ESC>:nohl<CR>i
 
 " Break a line in normalmode with <CR>
 " noremap <CR> i<CR><ESC>
-
-" Quicksave command
-"noremap <C-Y> :update<CR><ESC>
-"vnoremap <C-Y> <C-C>:update<CR><ESC>
-"inoremap <C-Y> <C-O>:update<CR><ESC>
 
 noremap <Leader>w :w<CR>
 
@@ -201,11 +188,11 @@ nnoremap <up> :<up>
 " MUST be inserted BEFORE the colorscheme command
 " autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 " au InsertLeave * match ExtraWhitespace /\s\+$/
-set list
+" set list
 set lcs=trail:-
 
 " Color scheme
-set t_Co=256
+" set t_Co=256
 " let g:solarized_termcolors = 256 " remove comment when using solarized
 "if you want the theme timebased do:
 " if strftime("%H") < 21
@@ -215,9 +202,15 @@ set t_Co=256
 " else
 "    set background=dark
 " endif
-" set termguicolors
-colorscheme default
+if (has("termguicolors"))
+    set termguicolors
+endif
+colorscheme two-firewatch
 set background=dark
+
+if has("one")
+    let g:one_allow_italics = 1
+endif
 
 " set cursorline
 hi CursorLine cterm=None ctermbg=238
@@ -259,6 +252,10 @@ set incsearch
 set ignorecase
 set smartcase
 
+" netrw settings
+let g:netrw_liststyle= 3
+map <F7> :Lex<CR>
+
 " highlight IncSearch guifg='DarkOrange' guibg='White'
 hi SpellBad cterm=underline ctermfg=None ctermbg=None
 
@@ -271,23 +268,6 @@ augroup python
                 \ | highlight def link pythonSelf Special
 augroup end
 
-" function! InsertStatuslineColor(mode)
-"   if a:mode == 'i'
-"     hi statusline ctermfg=3
-"   elseif a:mode == 'r'
-"     hi statusline ctermfg=9
-"   else
-"     hi statusline ctermfg=4
-"   endif
-" endfunction
-"
-" au InsertEnter * call InsertStatuslineColor(v:insertmode)
-" au InsertChange * call InsertStatuslineColor(v:insertmode)
-" au InsertLeave * hi statusline ctermfg=231
-"
-" " default the statusline to green when entering Vim
-" hi statusline ctermfg=231
-
 " ============================================================================
 " Plugins
 " ============================================================================
@@ -298,7 +278,7 @@ set noshowmode
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline_theme='base16_colors'
+let g:airline_theme='twofirewatch'
 let g:airline#extensions#tagbar#enabled = 0
 let g:airline#extensions#bufferline#enabled = 0
 
@@ -326,38 +306,6 @@ endfunction
 inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
 inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
 
-"" Settings for Nerdtree
-nmap <F7> :NERDTreeToggle<CR>
-
-
-"" Settings for Rainbow
-"let g:rainbow_active = 1
-"let g:rainbow_conf = {
-"    \   'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
-"    \   'ctermfgs': ['grey', 'lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
-"    \   'operators': '_,_',
-"    \   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
-"    \   'separately': {
-"    \       '*': {},
-"    \       'tex': {
-"    \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
-"    \       },
-"    \       'lisp': {
-"    \           'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
-"    \       },
-"    \       'vim': {
-"    \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
-"    \       },
-"    \       'html': {
-"    \           'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
-"    \       },
-"    \       'css': 0,
-"    \   }
-"    \}
-
-" Settings for Rainbow Parantheses (Rainbow doesn't work in nvim)
-au VimEnter * RainbowParentheses
-
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
 
@@ -366,14 +314,6 @@ nmap ga <Plug>(EasyAlign)
 
 " Settings for tagbar
 nmap <F8> :TagbarOpenAutoClose<CR>
-
-" " Settings for neocomplete/deoplete (set to 0 if neocomplete complains about missing
-" " lua) seems to load neocomplete in nvim anyway, fixed with hack at plugs above
-" if has('nvim')
-"     let g:deoplete#enable_at_startup = 1
-" else
-"     let g:neocomplete#enable_at_startup = 1
-" endif
 
 " Settings for neomake
 let g:neomake_place_signs = 1
@@ -389,11 +329,6 @@ let g:neomake_python_flake8_maker = {
     \ }
 let g:neomake_python_pylint_exe = 'pylint2'
 let g:neomake_python_enabled_makers =['flake8']
-
-
-" Settings for GoldenView
-let g:goldenview__enable_default_mapping = 0
-nmap <silent> <C-g> <Plug>GoldenViewSplit
 
 " Settings for vimtex
 let g:vimtex_view_general_viewer = 'okular'
@@ -411,55 +346,8 @@ let g:vimtex_quickfix_warnings = {
           \ 'font' : 0
           \}
 
-" " neo-/deoplete patterns for completion with vimtex
-" if has('nvim')
-"
-" if !exists('g:deoplete#omni#input_patterns')
-"       let g:deoplete#omni#input_patterns = {}
-"   endif
-"   let g:deoplete#omni#input_patterns.tex = '\\(?:'
-"         \ .  '\w*cite\w*(?:\s*\[[^]]*\]){0,2}\s*{[^}]*'
-"         \ . '|\w*ref(?:\s*\{[^}]*|range\s*\{[^,}]*(?:}{)?)'
-"         \ . '|hyperref\s*\[[^]]*'
-"         \ . '|includegraphics\*?(?:\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-"         \ . '|(?:include(?:only)?|input)\s*\{[^}]*'
-"         \ . '|\w*(gls|Gls|GLS)(pl)?\w*(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-"         \ . '|includepdf(\s*\[[^]]*\])?\s*\{[^}]*'
-"         \ . '|includestandalone(\s*\[[^]]*\])?\s*\{[^}]*'
-"         \ . '|usepackage(\s*\[[^]]*\])?\s*\{[^}]*'
-"         \ . '|documentclass(\s*\[[^]]*\])?\s*\{[^}]*'
-"         \ . '|\w*'
-" \ .')'
-"
-" elseif has('vim')
-"
-" if !exists('g:neocomplete#sources#omni#input_patterns')
-"     let g:neocomplete#sources#omni#input_patterns = {}
-"   endif
-"   let g:neocomplete#sources#omni#input_patterns.tex =
-"         \ '\v\\%('
-"         \ . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-"         \ . '|\a*ref%(\s*\{[^}]*|range\s*\{[^,}]*%(}\{)?)'
-"         \ . '|hyperref\s*\[[^]]*'
-"         \ . '|includegraphics\*?%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-"         \ . '|%(include%(only)?|input)\s*\{[^}]*'
-"         \ . '|\a*(gls|Gls|GLS)(pl)?\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-"         \ . '|includepdf%(\s*\[[^]]*\])?\s*\{[^}]*'
-"         \ . '|includestandalone%(\s*\[[^]]*\])?\s*\{[^}]*'
-"         \ . '|usepackage%(\s*\[[^]]*\])?\s*\{[^}]*'
-"         \ . '|documentclass%(\s*\[[^]]*\])?\s*\{[^}]*'
-"         \ . '|\a*'
-" \ . ')'
-"
-" endif
-
 " surround for latex environments
 let g:surround_108 = "\\begin{\1environment: \1}\r\\end{\1\1}"
-
-""" Settings for denite
-" noremap <C-p>b :Denite buffer<CR>
-" noremap <C-p>f :Denite file_old file_rec<CR>
-" noremap <C-p> :Denite buffer file_old file_rec<CR>
 
 " Trigger configuration. Do not use <tab> if you use
 " https://github.com/Valloric/YouCompleteMe.
@@ -470,5 +358,11 @@ let g:surround_108 = "\\begin{\1environment: \1}\r\\end{\1\1}"
 " " If you want :UltiSnipsEdit to split your window.
 " let g:UltiSnipsEditSplit="vertical"
 
-"CtrlP settings
-noremap <c-p> :CtrlPMixed<cr>
+set completeopt+=menuone
+set completeopt+=noinsert
+set completeopt+=preview
+
+set shortmess+=c   " Shut off completion messages
+set belloff+=ctrlg " If Vim beeps during completion
+
+let g:mucomplete#enable_auto_at_startup = 1

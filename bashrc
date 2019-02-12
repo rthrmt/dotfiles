@@ -72,7 +72,7 @@ alias tmux='tmux -2'
 alias gst='git status'
 #alias vim='nvim'
 alias vimtex='vim --servername VIM'
-alias editvim='nvim ~/.vimrc'
+alias editvim='vim ~/.vimrc'
 
 unset LESSCHARSET
 #--------------------------------------
